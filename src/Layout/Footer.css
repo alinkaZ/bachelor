@@ -1,0 +1,15 @@
+.personalInfo p{
+    display: inline-block;
+    padding: 30px;
+    position: flex;
+    font-size: 12px;
+}
+#footer{
+    margin-top: 50px;
+}
+
+#footer a{
+    color: black!important;
+}
+
+

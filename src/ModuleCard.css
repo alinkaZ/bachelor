@@ -1,0 +1,12 @@
+.moduleCard {
+  border: 1px solid green;
+  width: 300px;
+  background-color: yellow;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 10px;
+}
+
+.moduleCard__image {
+  max-width: 100%;
+}

@@ -1,0 +1,17 @@
+.logo{
+    width: 100px;
+}
+.mr-auto {
+   position: absolute;
+    right: 20px;
+    padding: 10px;
+  }
+.navbar{
+    background-color:#E5E5E5;
+    
+}
+.mr-auto a {
+  color: #E5E5E5!important;
+}
+  
+

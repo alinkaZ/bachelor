@@ -1,0 +1,19 @@
+.cards {
+  display: flex;
+  width: 100%;
+  justify-content: space-around;
+}
+
+.btn-primary{
+  background-color:#ffd500!important;
+  border:#ffd500!important;
+  border-radius: 30px!important;
+  }
+a{
+  color: black!important;
+  margin-top: 0px!important;  
+}
+
+#root{
+  background-color: #E5E5E5;
+}

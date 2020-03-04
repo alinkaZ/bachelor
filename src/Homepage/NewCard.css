@@ -1,0 +1,32 @@
+.container p{
+    font-size: 14px;
+}
+
+#lector{
+    text-align: left;
+}
+#time{
+    text-align: right;
+}
+
+.container-button{
+    width: 100%;  
+}
+.container-button .btn{
+    display: table;
+    margin: 0 auto;
+}
+.btn a{
+    color: black;
+}
+.card{
+    margin-right: 20px;
+    box-shadow: 10px;
+    border-radius: 30px!important;
+    
+}
+.card-img-top{
+    border-top-right-radius: 30px!important;
+    border-top-left-radius: 30px!important;
+}
+

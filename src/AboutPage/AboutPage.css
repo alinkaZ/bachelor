@@ -1,0 +1,12 @@
+.imgAbout img{
+    width: 320px;
+    padding-bottom: 15px;
+    margin: auto;    
+    display: block;
+}
+.partnersLogo img{
+    width: 220px;
+    padding: 30px;
+    margin: auto;    
+    display: block;
+}
