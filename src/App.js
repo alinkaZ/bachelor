@@ -20,7 +20,7 @@ export default class App extends Component {
    render () {
     return (
       <Layout>
-        <Route exact path='/' component={LoginPage} />
+            <Route exact path='/' component={LoginPage} />
         <Route path='/login' component={LoginPage} />
         <Route path='/modules' component ={CardModules} />
         <Route path='/about' component ={AboutPage} />
