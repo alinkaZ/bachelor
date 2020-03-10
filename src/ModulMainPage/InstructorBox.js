@@ -13,10 +13,11 @@ render (){
                     <img className='instructorImg' src={this.props.item.img}/>
                 </Col>
                 <Col xs={12} md={8}>
-                    <p>{this.props.item.name}</p>
-                    <p>{this.props.item.title}</p>
-                    <p>{this.props.item.institution}</p>
-
+                    <div className='instructorInfo'>
+                        <p>{this.props.item.name}</p>
+                        <p>{this.props.item.title}</p>
+                        <p>{this.props.item.institution}</p>
+                    </div>
                 </Col>
             </Row>
         </Container>

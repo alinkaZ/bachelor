@@ -14,7 +14,7 @@ export class LoginPage extends Component{
                 </Col>
                 <Col xs={12} md={4}>
                     <Form>
-                        <h1>Log in</h1>
+                        <h1 className='loginh1'>Log in</h1>
                         <Form.Group controlId="formBasicEmail">
                             <Form.Label>Email address</Form.Label>
                             <Form.Control type="email" placeholder="Enter email" />

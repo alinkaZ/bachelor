@@ -10,7 +10,10 @@ import { CardModules } from './Homepage/CardModules';
 import { ModulForm} from './ModulMainPage/ModulForm';
 import { AboutPage } from './AboutPage/AboutPage';
 import { LoginPage } from './LoginPage/LoginPage';
-import { ModulDetailPage } from './ModulDetailPageText/ModulDetailPageText';
+import { ModulDetailPageText } from './ModulDetailPageText/ModulDetailPageText';
+import { ModulDetailPageVideo } from './ModulDetailPageVideo/ModulDetailPageVideo';
+import { ModulDetailPageQuiz } from './ModulDetailPageQuiz/ModulDetailPageQuiz';
+import { Finish } from './Finish/Finish';
 
 
 export default class App extends Component {
@@ -22,6 +25,11 @@ export default class App extends Component {
         <Route path='/modules' component ={CardModules} />
         <Route path='/about' component ={AboutPage} />
         <Route path='/modules1' component={ModulForm}/>
+        <Route path='/detailText' component={ModulDetailPageText}/>
+        <Route path='/video' component={ModulDetailPageVideo}/>
+        <Route path='/quiz' component={ModulDetailPageQuiz}/>
+        <Route path='/finish' component={Finish}/>
+
       </Layout>
     );
   }

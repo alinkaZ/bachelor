@@ -4,12 +4,14 @@ import { TextBox } from './TextBox';
 import { ButtonsPrevNext } from './ButtonsPrevNext';
 import { CommentBox } from './CommentBox';
 import { PaginationRow } from './Pagination';
+import { Header } from './Header';
 
-export class ModulDetailPage extends Component{
+export class ModulDetailPageText extends Component{
     render(){
         return(
             <Container>
                 <PaginationRow/>
+                <Header/>
                 <TextBox/>
                 <ButtonsPrevNext/>
                 <CommentBox/>

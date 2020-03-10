@@ -2,13 +2,11 @@ import React from 'react';
 import './Footer.css';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
-import Button from 'react-bootstrap/Button';
-import Form from 'react-bootstrap/Form';
-import FormControl from 'react-bootstrap/FormControl';
+
 
 export function Footer(){
     return(
-        <>
+        <div className='footer'>
         
         <Navbar id="footer">
           
@@ -25,6 +23,6 @@ export function Footer(){
             <p>Copyright © 2020 All Rights Reserved </p>
         </div>
        
-        </>      
+        </div>      
     );
 }

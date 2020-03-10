@@ -28,7 +28,7 @@ export class ModulForm extends Component {
                 <Col xs={6} md={4}>
                     <Container>
                         <Row>
-                            <Button as="input" type="button" value="Start the course"/>
+                            <Button type="button"  href='/detailText'>Start the course</Button>
                         </Row>
                         <Row>
                             <Summary/>

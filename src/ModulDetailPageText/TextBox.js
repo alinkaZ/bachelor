@@ -5,7 +5,6 @@ export class TextBox extends Component{
     render(){
         return(
             <div>
-                <h1>The Norwegian Welfare State</h1>
                 <p>The Norwegian Welfare State Ideals in tension Norway is a thin, stretched country in Scandinavia. It has a population of only 5 million people. Oslo, the capital, has about 650,000 inhabitants. The metropolitan area, which includes the densely populated areas around Oslo proper, has 1.7 million people.</p> 
                 <p>In Norway all political parties basically agree that the quality of health, education and social services should be as similar as possible throughout the country. </p>
                 <p>The Norwegian welfare state has the following general characteristics:</p>
