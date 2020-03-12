@@ -1,9 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\public",
-    "\\src"
+    "\\src",
+    "\\src\\LoginPage"
   ],
-  "SelectedNode": "\\package.json",
+  "SelectedNode": "\\src\\LoginPage\\LoginPage.ts",
   "PreviewInSolutionExplorer": false
 }
