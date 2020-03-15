@@ -62,6 +62,10 @@ export class LoginPage extends Component{
                 </Col>
 
              </Row>
+             <Row>
+                
+
+             </Row>
 
             </table>
         );
