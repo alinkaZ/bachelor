@@ -64,14 +64,15 @@ export class LoginPage extends Component{
 
              </Row>
              <Row>
+                 <Col></Col>
+                 <Col><h2>Or, log in with:</h2>
+                 </Col>
+                 <Col></Col>
+                
+             </Row>
+             <Row>
                 <Col>
                     <div className ="Facebook">
-                        <header className ="FacebookHeader">
-                            <h1 className="Facebook-title">Facebook Auth Example</h1>
-                        </header>
-                        <p className="Facebook-intro">
-                            Sign in with Facebook instead.
-                        </p>
                         <Facebook />
                     </div>
                 </Col>
