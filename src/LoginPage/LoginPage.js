@@ -6,6 +6,7 @@ import Col from 'react-bootstrap/Col';
 import { Container } from 'reactstrap';
 import './LoginPage.css';
 import Facebook from './components/Facebook';
+import Gmail from './components/Gmail'
 
 export class LoginPage extends Component{
     render(){
@@ -74,6 +75,11 @@ export class LoginPage extends Component{
                 <Col>
                     <div className ="Facebook">
                         <Facebook />
+                    </div>
+                </Col>
+                <Col>
+                    <div className ="Facebook">
+                        <Gmail/>
                     </div>
                 </Col>
              </Row>
