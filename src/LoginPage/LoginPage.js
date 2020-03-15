@@ -5,6 +5,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { Container } from 'reactstrap';
 import './LoginPage.css';
+import Facebook from './components/Facebook';
 
 export class LoginPage extends Component{
     render(){
@@ -63,8 +64,17 @@ export class LoginPage extends Component{
 
              </Row>
              <Row>
-                
-
+                <Col>
+                    <div className ="Facebook">
+                        <header className ="FacebookHeader">
+                            <h1 className="Facebook-title">Facebook Auth Example</h1>
+                        </header>
+                        <p className="Facebook-intro">
+                            Sign in with Facebook instead.
+                        </p>
+                        <Facebook />
+                    </div>
+                </Col>
              </Row>
 
             </table>
