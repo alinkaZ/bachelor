@@ -66,7 +66,7 @@ export class LoginPage extends Component{
              </Row>
              <Row>
                  <Col></Col>
-                 <Col><h2>Or, log in with:</h2>
+                 <Col><h2>Alternatives:</h2>
                  </Col>
                  <Col></Col>
                 
@@ -78,9 +78,11 @@ export class LoginPage extends Component{
                     </div>
                 </Col>
                 <Col>
-                    <div className ="Facebook">
+                    <div className ="Gmail">
                         <Gmail/>
                     </div>
+                </Col>
+                <Col>
                 </Col>
              </Row>
 
