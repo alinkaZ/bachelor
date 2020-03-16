@@ -1,4 +1,34 @@
-import React, {Component} from 'react'
+import React, { Component } from 'react';
+import '../LoginPage.css';
+import FacebookLogin from 'react-facebook-login';
+
+class Facebook extends Component {
+
+    render() {
+  
+      const responseFacebook = (response) => {
+        console.log(response);
+      }
+  
+      return (
+        <div className="Facebook">
+  
+        <FacebookLogin
+          appId="1315775898620150"
+          fields="name,email,picture"
+          callback={responseFacebook}
+        />
+  
+        </div>
+      );
+    }
+  }
+  
+  export default Facebook;
+
+
+
+/*import React, {Component} from 'react'
 import FacebookLogin from 'react-facebook-login'
 
 
@@ -53,4 +83,4 @@ export default class Facebook extends Component {
         <div> {fbContent}</div>
         )
     }
-}
+}*/
