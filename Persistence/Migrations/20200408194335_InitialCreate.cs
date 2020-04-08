@@ -12,7 +12,11 @@ namespace Persistence.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("Sqlite:Autoincrement", true),
-                    Name = table.Column<string>(nullable: true)
+                    Navn = table.Column<string>(nullable: true),
+                    Type = table.Column<string>(nullable: true),
+                    Etternavn = table.Column<string>(nullable: true),
+                    Kurs = table.Column<string>(nullable: true),
+                    Age = table.Column<int>(nullable: false)
                 },
                 constraints: table =>
                 {

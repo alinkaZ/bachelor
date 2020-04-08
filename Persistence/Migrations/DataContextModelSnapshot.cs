@@ -21,7 +21,19 @@ namespace Persistence.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("INTEGER");
 
-                    b.Property<string>("Name")
+                    b.Property<int>("Age")
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Etternavn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Kurs")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Navn")
+                        .HasColumnType("TEXT");
+
+                    b.Property<string>("Type")
                         .HasColumnType("TEXT");
 
                     b.HasKey("Id");

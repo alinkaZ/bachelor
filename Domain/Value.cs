@@ -6,6 +6,14 @@ namespace Domain
     {
         public int Id { get; set; }
 
-        public string Name { get; set; }
+        public string Navn { get; set; }
+
+        public string Type { get; set; }
+
+        public string Etternavn { get; set; }
+
+        public string Kurs { get; set; }
+
+        public int Age { get; set; }
     }
 }
