@@ -15,7 +15,7 @@ namespace Persistence.Migrations
                     Navn = table.Column<string>(nullable: true),
                     Type = table.Column<string>(nullable: true),
                     Etternavn = table.Column<string>(nullable: true),
-                    Kurs = table.Column<string>(nullable: true),
+                    Role = table.Column<string>(nullable: true),
                     Age = table.Column<int>(nullable: false)
                 },
                 constraints: table =>

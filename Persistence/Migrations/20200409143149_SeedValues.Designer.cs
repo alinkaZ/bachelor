@@ -8,8 +8,8 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20200408194335_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20200409143149_SeedValues")]
+    partial class SeedValues
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -29,10 +29,10 @@ namespace Persistence.Migrations
                     b.Property<string>("Etternavn")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Kurs")
+                    b.Property<string>("Navn")
                         .HasColumnType("TEXT");
 
-                    b.Property<string>("Navn")
+                    b.Property<string>("Role")
                         .HasColumnType("TEXT");
 
                     b.Property<string>("Type")
@@ -41,6 +41,26 @@ namespace Persistence.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Values");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Age = 24,
+                            Etternavn = "Messaritakis",
+                            Navn = "Alex",
+                            Role = "Student",
+                            Type = "Deltaker"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Age = 43,
+                            Etternavn = "Ghanist",
+                            Navn = "Dimi",
+                            Role = "Ansatt",
+                            Type = "Admin"
+                        });
                 });
 #pragma warning restore 612, 618
         }

@@ -12,7 +12,7 @@ namespace Domain
 
         public string Etternavn { get; set; }
 
-        public string Kurs { get; set; }
+        public string Role { get; set; }
 
         public int Age { get; set; }
     }
