@@ -5,15 +5,15 @@ import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Route } from 'react-router';
 import { Layout } from './Layout/Layout';
-import { InfoModul } from './ModulMainPage/InfoModul';
+import { InfoModul } from './ModulPage/ModulMainPage/InfoModul';
 import { CardModules } from './Homepage/CardModules';
-import { ModulForm} from './ModulMainPage/ModulForm';
+import { ModulForm} from './ModulPage/ModulMainPage/ModulForm';
 import { AboutPage } from './AboutPage/AboutPage';
 import { LoginPage } from './LoginPage/LoginPage';
-import { ModulDetailPageText } from './ModulDetailPageText/ModulDetailPageText';
-import { ModulDetailPageVideo } from './ModulDetailPageVideo/ModulDetailPageVideo';
-import { ModulDetailPageQuiz } from './ModulDetailPageQuiz/ModulDetailPageQuiz';
-import { Finish } from './Finish/Finish';
+import { ModulDetailPageText } from './ModulPage/ModulDetailPageText/ModulDetailPageText';
+import { ModulDetailPageVideo } from './ModulPage/ModulDetailPageVideo/ModulDetailPageVideo';
+import { ModulDetailPageQuiz } from './ModulPage/ModulDetailPageQuiz/ModulDetailPageQuiz';
+import { Finish } from './ModulPage/Finish/Finish';
 
 
 export default class App extends Component {
