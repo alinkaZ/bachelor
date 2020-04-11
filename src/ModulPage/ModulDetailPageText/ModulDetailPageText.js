@@ -5,11 +5,13 @@ import { ButtonsPrevNext } from './ButtonsPrevNext';
 import { CommentBox } from './CommentBox';
 import { PaginationRow } from './Pagination';
 import { Header } from './Header';
+import { Breadcrumbs } from '../ModulMainPage/Breadcrumbs';
 
 export class ModulDetailPageText extends Component{
     render(){
         return(
             <Container>
+                <Breadcrumbs/>
                 <PaginationRow/>
                 <Header/>
                 <TextBox/>

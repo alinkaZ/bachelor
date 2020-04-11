@@ -5,11 +5,13 @@ import { CommentBox } from '../ModulDetailPageText/CommentBox';
 import { PaginationRow } from '../ModulDetailPageText/Pagination';
 import { Video } from './Video';
 import { Header } from '../ModulDetailPageText/Header';
+import { Breadcrumbs } from '../ModulMainPage/Breadcrumbs';
 
 export class ModulDetailPageVideo extends Component{
     render(){
         return(
             <Container>
+                <Breadcrumbs/>
                 <PaginationRow/>
                 <Header/>
                 <Video/>

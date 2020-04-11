@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './Summary.css';
 import Table from 'react-bootstrap/Table';
 
 

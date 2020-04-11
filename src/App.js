@@ -14,13 +14,15 @@ import { ModulDetailPageText } from './ModulPage/ModulDetailPageText/ModulDetail
 import { ModulDetailPageVideo } from './ModulPage/ModulDetailPageVideo/ModulDetailPageVideo';
 import { ModulDetailPageQuiz } from './ModulPage/ModulDetailPageQuiz/ModulDetailPageQuiz';
 import { Finish } from './ModulPage/Finish/Finish';
+import { CardModulesAdmin } from './ModulPageAdmin/AdminHomePage';
+import { AdminModulMainPage } from './ModulPageAdmin/AdminModulMainPage/AdminModulMainPage';
 
 
 export default class App extends Component {
    render () {
     return (
       <Layout>
-            <Route exact path='/' component={LoginPage} />
+        <Route exact path='/' component={LoginPage} />
         <Route path='/login' component={LoginPage} />
         <Route path='/modules' component ={CardModules} />
         <Route path='/about' component ={AboutPage} />
@@ -29,7 +31,8 @@ export default class App extends Component {
         <Route path='/video' component={ModulDetailPageVideo}/>
         <Route path='/quiz' component={ModulDetailPageQuiz}/>
         <Route path='/finish' component={Finish}/>
-
+        <Route path='/admin' component={CardModulesAdmin}/>
+        <Route path='/create' component={AdminModulMainPage}/>
       </Layout>
     );
   }
