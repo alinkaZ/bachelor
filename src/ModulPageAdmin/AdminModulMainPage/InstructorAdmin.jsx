@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-//import Image "../../Assets/image.png";
+import Image from "../../Assets/image.png";
 import './InstructorAdmin.css';
 
 
@@ -8,12 +8,10 @@ export class InstructorAdmin extends Component{
         return(
                 <div className="inctructorCard">
                     <div className="instructor">
-                        {/*<img src:Image>*/}nhaubvh
-                    </div>
-                
-                
+                        <img src={Image}/>
+                    </div>                
                     <div className="instructor">
-                        jhnoh
+                        Describe lecturer of the course
                 
                     </div>
                </div>

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import { InfoMainPage } from '../Homepage/InfoMainPage';
 import { HomeNavbar } from '../Layout/HomeNavbar';
-import { Footer } from '../Layout/Footer';
+import { Footer } from './Footer';
 import { NewCard } from '../Homepage/NewCard';
 import './Layout.css';
 

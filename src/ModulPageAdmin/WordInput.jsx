@@ -9,9 +9,9 @@ export class WordInput extends Component{
             <>
             <InputGroup>
                 <InputGroup.Prepend>
-                    <InputGroup.Text>Edit text</InputGroup.Text>
+                    <InputGroup.Text >Edit text</InputGroup.Text>
                 </InputGroup.Prepend>
-                <FormControl as="textarea" aria-label="With textarea" />
+                <FormControl as="textarea" aria-label="With textarea" rows={this.props.rows}/>
             </InputGroup>
             </>
         );

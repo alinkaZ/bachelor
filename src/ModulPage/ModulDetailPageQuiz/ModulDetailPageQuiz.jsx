@@ -3,18 +3,20 @@ import { Pagination, Container } from 'reactstrap';
 import { ButtonsPrevNext } from '../ModulDetailPageText/ButtonsPrevNext';
 import { CommentBox } from '../ModulDetailPageText/CommentBox';
 import { PaginationRow } from '../ModulDetailPageText/Pagination';
-import { Video } from './Video';
 import { Header } from '../ModulDetailPageText/Header';
-import { Breadcrumbs } from '../ModulMainPage/Breadcrumbs';
+import { Question } from './Question';
+import { Breadcrumbs } from '../../ModulPage/Breadcrumbs';
 
-export class ModulDetailPageVideo extends Component{
+export class ModulDetailPageQuiz extends Component{
     render(){
         return(
             <Container>
                 <Breadcrumbs/>
                 <PaginationRow/>
                 <Header/>
-                <Video/>
+                <Question/>
+                <Question/>
+                <Question/>
                 <ButtonsPrevNext/>
                 <CommentBox/>
             </Container>

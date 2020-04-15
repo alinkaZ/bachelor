@@ -5,7 +5,7 @@ import { ButtonsPrevNext } from './ButtonsPrevNext';
 import { CommentBox } from './CommentBox';
 import { PaginationRow } from './Pagination';
 import { Header } from './Header';
-import { Breadcrumbs } from '../ModulMainPage/Breadcrumbs';
+import { Breadcrumbs } from '../../ModulPage/Breadcrumbs';
 
 export class ModulDetailPageText extends Component{
     render(){
