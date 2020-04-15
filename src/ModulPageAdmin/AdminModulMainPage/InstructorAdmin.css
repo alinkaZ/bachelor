@@ -1,9 +1,15 @@
-div .instructor{
+.instructor{
     border: black;
-    height: 200px;
-    width: 300px;
+    height: 100px;
+    width: 100px;
+    
 }
 
-div .inctructorCard{
-    display: inline-block;
+.inctructorCard{
+    display:flex;
+    justify-content:space-between;
+}
+.instructor img{
+    height: 80px;
+    width: 80px;
 }
