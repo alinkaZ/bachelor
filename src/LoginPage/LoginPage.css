@@ -1,7 +1,12 @@
 .btn-primary{
     display: table;
     margin: 0 auto;
+    margin-bottom: 20px;
 }
 h1.loginh1{
  text-align: center;
+}
+
+.facebook{
+    align-content: center;
 }
