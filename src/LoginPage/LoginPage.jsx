@@ -6,7 +6,7 @@ import Col from "react-bootstrap/Col";
 import { Container } from "reactstrap";
 import "./LoginPage.css";
 import Facebook from "./components/Facebook";
-import Gmail from "./components/Google";
+
 
 export class LoginPage extends Component {
   render() {

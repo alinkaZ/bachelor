@@ -6,6 +6,7 @@ import { PaginationRow } from '../ModulDetailPageText/Pagination';
 import { Header } from '../ModulDetailPageText/Header';
 import { Question } from './Question';
 import { Breadcrumbs } from '../../ModulPage/Breadcrumbs';
+import { PopUpCorrectAnswer } from "../ModulDetailPageQuiz/PopUpCorrectAnswer";
 
 export class ModulDetailPageQuiz extends Component{
     render(){
@@ -14,9 +15,9 @@ export class ModulDetailPageQuiz extends Component{
                 <Breadcrumbs/>
                 <PaginationRow/>
                 <Header/>
-                <Question/>
-                <Question/>
-                <Question/>
+                <PopUpCorrectAnswer/><Question/>
+                <PopUpCorrectAnswer/><Question/>
+                <PopUpCorrectAnswer/><Question/>
                 <ButtonsPrevNext/>
                 <CommentBox/>
             </Container>

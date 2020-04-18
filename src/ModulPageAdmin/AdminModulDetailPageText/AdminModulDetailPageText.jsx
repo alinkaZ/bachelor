@@ -13,7 +13,7 @@ import Tooltip from "react-bootstrap/Tooltip";
 export class AdminModulDetailPageText extends Component {
   render() {
     return (
-      <>
+      <Container>
         <Row>
           <Col xs={12} md={12}>
             <Breadcrumbs />
@@ -62,7 +62,7 @@ export class AdminModulDetailPageText extends Component {
             </OverlayTrigger>
           </Col>
         </Row>
-      </>
+      </Container>
     );
   }
 }

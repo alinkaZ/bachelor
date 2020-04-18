@@ -8,5 +8,7 @@ h1.loginh1{
 }
 
 .facebook{
-    align-content: center;
+    display: table;
+    margin: 0 auto;
+    text-align: center;
 }

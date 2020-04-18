@@ -1,17 +1,12 @@
-import React, { Component } from 'react';
-import ResponsiveEmbed from 'react-bootstrap/ResponsiveEmbed';
-import './Video.css';
+import React, { Component } from "react";
+import "./Video.css";
 
-
-
-export class Video extends Component{
-    render(){
-        return(
-                <div style={{ width: 660, height: 'auto'}}>
-                   
-                        <img  />
-                   
-                </div>    
-        );
-    }
+export class Video extends Component {
+  render() {
+    return (
+      <div className="videoImg">
+        <img alt="hereShouldBeVideo" src="https://i.imgur.com/3fYa9Ak.png" />
+      </div>
+    );
+  }
 }

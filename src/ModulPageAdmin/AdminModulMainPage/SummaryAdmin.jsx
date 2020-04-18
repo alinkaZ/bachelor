@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import Table from 'react-bootstrap/Table';
 import Form from 'react-bootstrap/Form';
 import "./SummaryAdmin.css";
 import Row from 'react-bootstrap/Row';
