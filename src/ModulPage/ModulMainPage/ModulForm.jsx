@@ -44,7 +44,7 @@ export class ModulForm extends Component {
           <Col xs={12} md={8}>
             <InfoModul />
             <h4>Course topics</h4>
-            <Schedule id="schedule" />
+            <Schedule id="schedule" dataSchedule={ModulData.topics} />
           </Col>
           <Col xs={6} md={4}>
             <Container>
@@ -57,7 +57,7 @@ export class ModulForm extends Component {
                 <Summary dataSummary={ModulData} />
               </Row>
               <Row>
-                <Instructor />
+                <Instructor dataInstructors={ModulData.lectors}/>
               </Row>
             </Container>
           </Col>
