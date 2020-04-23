@@ -11,7 +11,9 @@ import "./ModulForm.css";
 import { Breadcrumbs } from "../../ModulPage/Breadcrumbs";
 import { ModulData } from "../../Data/ModuleData";
 
+
 export class ModulForm extends Component {
+  
   constructor() {
     super();
     this.state = { data: [] };
