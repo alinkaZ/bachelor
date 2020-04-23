@@ -7,7 +7,8 @@ import './Header.css';
     render(){
         return(
             <div className='header'>
-                <h1>The Norwegian Welfare State</h1>
+                <h1>{this.props.TextDataHeader}</h1>
+                {/*The Norwegian Welfare State*/}
             </div>
         );
     }

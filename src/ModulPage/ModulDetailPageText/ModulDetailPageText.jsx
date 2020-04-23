@@ -6,15 +6,19 @@ import { CommentBox } from './CommentBox';
 import { PaginationRow } from './Pagination';
 import { Header } from './Header';
 import { Breadcrumbs } from '../../ModulPage/Breadcrumbs';
+import { TextData } from "../../Data/TextData";
 
 export class ModulDetailPageText extends Component{
+    
     render(){
+        console.log (TextData.description);
+        
         return(
             <Container>
                 <Breadcrumbs/>
                 <PaginationRow/>
-                <Header/>
-                <TextBox/>
+                <Header TextDataHeader={TextData.title}/>
+                <TextBox TextDataBox={TextData.description}/>
                 <ButtonsPrevNext/>
                 <CommentBox/>
             </Container>
