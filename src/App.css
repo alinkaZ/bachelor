@@ -12,11 +12,12 @@
   }
 a{
   color: black!important;
-  margin-top: 0px!important;  
+  margin-top: 0px!important;
 }
 
 #root{
   background-color: #E5E5E5;
+  height: inherit;
 }
 
 p, li{
