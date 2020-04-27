@@ -5,12 +5,12 @@
     font-size: 12px!important;
 }
 #footer{
-    margin-top: 50px;
 }
 
 #footer a{
     color: black!important;
 }
 
-
-
+.footer {
+  margin-top: 50px;
+}

@@ -12,7 +12,7 @@
   }
 a{
   color: black!important;
-  margin-top: 0px!important;  
+  margin-top: 0px!important;
 }
 
 #root{
@@ -23,4 +23,8 @@ p, li{
   font-family: 'Moderat','Avenir','Helvetica','Arial',sans-serif!important;
   font-size: 18px!important;
   line-height: 1.5;
+}
+
+.footer, #mainContainer::after{
+  height: 110px;
 }

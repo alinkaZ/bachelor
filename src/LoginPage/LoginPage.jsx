@@ -1,51 +1,146 @@
 import React, { Component } from "react";
-import Form from "react-bootstrap/Form";
+//import Form from "react-bootstrap/Form";
+
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Container } from "reactstrap";
 import "./LoginPage.css";
 import Facebook from "./components/Facebook";
+import authProvider from "../utils/auth/authProvider";
+import { authenticationService } from "../utils/auth/authentication.service";
+import { FormErrors } from "./components/FormErrors";
+import RegisterModalForm from "./components/RegisterModalForm"
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+
+
 
 
 export class LoginPage extends Component {
+  constructor(){
+    super();
+
+    this.state = {
+      email: '',
+      password: '',
+      formErrors: {email: '', password: ''},
+      emailValid: false,
+      passwordValid: false,
+      formValid: false,
+      modalShow: false
+    }
+  //
+  }
+
+  handleUserInput = (e) => {
+    console.log("smmmm");
+    const type = e.target.type;
+    const value = e.target.value;
+    this.setState({[type]: value},
+      () => { this.validateField(type, value) });
+  }
+
+  LoginHandler = (value) => {
+    console.log("unmo");
+    if(authProvider.login(this.state.email, this.state.password)){
+      //window.location.href="/admin";
+      return () => {return true}
+    } else {
+      return () => {return false}
+    }
+    // return ((value) => {authProvider.login(this.state.email, this.state.password);
+    // })
+  }
+
+  RegisterHandler () {
+
+    return(0)
+  }
+
+  setModalShow (modalShow) {
+    this.setState({
+      modalShow: modalShow
+    })
+  }
+
+
+
+
   render() {
+    // const [modalShow, setModalShow] = React.useState(false);
+
     return (
       <Container>
         <Row>
           <Col xm={12} xs={4}></Col>
           <Col xm={12} xs={4}>
-            <Form>
-              <h1 className="loginh1">Log in</h1>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <Form.Control type="email" placeholder="Enter email" />
-                <Form.Text className="text-muted">
-                  We'll never share your email with anyone else.
-                </Form.Text>
-              </Form.Group>
-
-              <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control type="password" placeholder="Password" />
-              </Form.Group>
-              <Form.Group controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-              </Form.Group>
-              <Row>
-                <Button variant="primary" type="submit" size="lg" href="/admin">
-                  Submit
-                </Button>
-                <Button
-                  variant="primary"
-                  type="register"
-                  size="lg"
-                  href="/admin"
-                >
-                  Register
-                </Button>
-              </Row>
-            </Form>
+            <Formik
+                    initialValues={{
+                        email: '',
+                        password: ''
+                    }}
+                    validationSchema={Yup.object().shape({
+                        email: Yup.string().required('Email is required'),
+                        password: Yup.string().required('Password is required')
+                    })}
+                    onSubmit={({ email, password }, { setStatus, setSubmitting }) => {
+                      console.log("email", email, "password", password);
+                        setStatus();
+                        authenticationService.login(email, password)
+                            .then(
+                                user => {
+                                    const { from } = this.props.location.state || { from: { pathname: "/" } };
+                                    this.props.history.push(from);
+                                },
+                                error => {
+                                    setSubmitting(false);
+                                    setStatus(error);
+                                }
+                            );
+                    }}
+                    render={({ errors, status, touched, isSubmitting }) => (
+                        <Form>
+                            <div className="form-group">
+                                <label htmlFor="email">Email</label>
+                                <Field name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
+                                <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Password</label>
+                                <Field name="password" type="password" className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
+                                <ErrorMessage name="password" component="div" className="invalid-feedback" />
+                            </div>
+                            <div className="form-group">
+                              <Field name="checkOut" type="checkbox" />
+                              <label htmlFor="checkOut">Check me out</label>
+                            </div>
+                            <div className="form-group">
+                              <Row>
+                              <Button
+                                type="submit"
+                                href="/admin"
+                                className="btn btn-primary"
+                                disabled={isSubmitting}
+                              >
+                                Submit
+                              </Button>
+                              <Button
+                                variant="primary"
+                                size="lg"
+                                onClick={() => {this.setModalShow(true)}}
+                              >
+                                Register
+                              </Button>
+                              <RegisterModalForm
+                                show={this.state.modalShow}
+                                onHide={() => {this.setModalShow(false)}}
+                              />
+                          </Row>
+                            </div>
+                        </Form>
+                    )}
+                />
           </Col>
           <Col xm={12} xs={4}></Col>
         </Row>

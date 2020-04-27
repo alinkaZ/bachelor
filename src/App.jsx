@@ -21,7 +21,7 @@ import { ModulDetailLesson } from "./ModulPage/ModulDetailLesson/ModulDetailLess
 
 export default class App extends Component {
   render() {
-
+    const sessionToken = localStorage.getItem('sessionToken')
     return (
       <Layout>
         <Switch>
