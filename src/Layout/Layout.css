@@ -1,3 +1,9 @@
 #mainContainer{
     padding-top: 100px;
+    min-height: 100vh;
+    margin-bottom: -162px;
+}
+#mainContainer::after{
+  content: "";
+  display: block;
 }

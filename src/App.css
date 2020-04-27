@@ -17,11 +17,14 @@ a{
 
 #root{
   background-color: #E5E5E5;
-  height: inherit;
 }
 
 p, li{
   font-family: 'Moderat','Avenir','Helvetica','Arial',sans-serif!important;
   font-size: 18px!important;
   line-height: 1.5;
+}
+
+.footer, #mainContainer::after{
+  height: 110px;
 }

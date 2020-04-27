@@ -8,17 +8,17 @@ import AddPictureIcon from "../../../src/Assets/plus.png";
 import "./AdminHomePage.css";
 
 export class CardModulesAdmin extends Component{
-    
+
     render(){
         return(
             <>
-            <WordInput/>  
+            <WordInput/>
             <br/>
             <Card style={{ width: '18rem' }}>
                 <Card.Img variant="top" src="https://cdn.iview.abc.net.au/thumbs/2400/ck/CK1714V_59a4b949bbec1_1280.jpg" />
                 <button onclick = "Add_Picture()">   
                     <img className="addIcon" src={AddPictureIcon}/>
-                </button> 
+                </button>
                 <Card.Body>
                     <Card.Title>New Course</Card.Title>
                     <Card.Text>
@@ -31,5 +31,3 @@ export class CardModulesAdmin extends Component{
         );
     }
 }
-
-            

@@ -8,10 +8,12 @@
   }
 .navbar{
     background-color:#E5E5E5;
-    
+
 }
 .mr-auto a {
   color: #E5E5E5!important;
 }
-  
 
+.dropdown-menu a{
+  color: #000000!important;
+}

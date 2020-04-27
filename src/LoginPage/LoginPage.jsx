@@ -7,7 +7,7 @@ import { Container } from "reactstrap";
 import "./LoginPage.css";
 import Facebook from "./components/Facebook";
 import authProvider from "../utils/auth/authProvider";
-import FormErrors from "./components/FormErrors";
+import { FormErrors } from "./components/FormErrors";
 
 export class LoginPage extends Component {
   constructor(){
@@ -20,23 +20,26 @@ export class LoginPage extends Component {
       passwordValid: false,
       formValid: false
     }
-    //this.loginEmail = React.createRef();
   }
 
   handleUserInput = (e) => {
-
+    console.log("smmmm");
     const type = e.target.type;
     const value = e.target.value;
-    console.log(type);
     this.setState({[type]: value},
       () => { this.validateField(type, value) });
   }
 
-  LoginHandler (value) {
-
-    return ((value) => {
-    authProvider.login(this.state.email, this.state.password);
-    })
+  LoginHandler = (value) => {
+    console.log("unmo");
+    if(authProvider.login(this.state.email, this.state.password)){
+      //window.location.href="/admin";
+      return () => {return true}
+    } else {
+      return () => {return false}
+    }
+    // return ((value) => {authProvider.login(this.state.email, this.state.password);
+    // })
   }
 
   RegisterHandler () {
@@ -45,27 +48,28 @@ export class LoginPage extends Component {
   }
 
   validateField(fieldName, value) {
-  let fieldValidationErrors = this.state.formErrors;
-  let emailValid = this.state.emailValid;
-  let passwordValid = this.state.passwordValid;switch(fieldName) {
-    case 'email':
-      emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-      fieldValidationErrors.email = emailValid ? '' : ' is invalid';
-      break;
-    case 'password':
-      passwordValid = value.length >= 6;
-      fieldValidationErrors.password = passwordValid ? '': ' is too short';
-      break;
-    default:
-      break;
-  }
-  this.setState({formErrors: fieldValidationErrors,
-                  emailValid: emailValid,
-                  passwordValid: passwordValid
-                }, this.validateForm);
-  }validateForm() {
-    this.setState({formValid: this.state.emailValid &&
-                              this.state.passwordValid});
+
+    let fieldValidationErrors = this.state.formErrors;
+    let emailValid = this.state.emailValid;
+    let passwordValid = this.state.passwordValid;switch(fieldName) {
+      case 'email':
+        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
+        fieldValidationErrors.email = emailValid ? '' : ' is invalid';
+        break;
+      case 'password':
+        passwordValid = value.length >= 6;
+        fieldValidationErrors.password = passwordValid ? '': ' is too short';
+        break;
+      default:
+        break;
+    }
+    this.setState({formErrors: fieldValidationErrors,
+                    emailValid: emailValid,
+                    passwordValid: passwordValid
+                  }, this.validateForm);
+    }validateForm() {
+      this.setState({formValid: this.state.emailValid &&
+                                this.state.passwordValid});
   }
 
   render() {
@@ -78,6 +82,10 @@ export class LoginPage extends Component {
               <h1 className="loginh1">Log in</h1>
               <Form.Group controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
+                <div className="panel panel-default">
+                  <FormErrors formErrors={this.state.formErrors} />
+                </div>
+
                 <Form.Control
                   type="email"
                   placeholder="Enter email"
@@ -106,7 +114,7 @@ export class LoginPage extends Component {
                   variant="primary"
                   type="submit"
                   size="lg"
-                  href="/admin"
+                  href="javascript:void(0)"
                   onClick={this.LoginHandler()}
                   disabled={!this.state.formValid}
                 >
@@ -116,8 +124,9 @@ export class LoginPage extends Component {
                   variant="primary"
                   type="register"
                   size="lg"
-                  href="/admin"
                   onClick={this.RegisterHandler()}
+                  href="/admin"
+                  disabled={!this.state.formValid}
                 >
                   Register
                 </Button>

@@ -15,8 +15,17 @@ const token = () => {
 
 const authProvider = {
     login: (login, pass) =>  {
+        if(json.find((data) => {
+          return data.email === login && data.pass === pass;
+        })){
+          console.log("success!");
+          localStorage.setItem('sessionToken', token());
+          return true;
+        } else {
+          console.log("login fail!");
+          return false;
+        }
 
-        console.log(token(), login, pass);
         // const request = new Request('https://mydomain.com/authenticate', {
         //     method: 'POST',
         //     body: JSON.stringify({ username, password }),

@@ -21,6 +21,9 @@ import { AdminModulDetailPageVideo } from "./ModulPageAdmin/AdminModulDetailPage
 
 export default class App extends Component {
   render() {
+    const sessionToken = localStorage.getItem('sessionToken')
+    console.log(sessionToken);
+    
     return (
       <Layout>
         <Switch>
