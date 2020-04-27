@@ -1,5 +1,5 @@
 .container p{
-    font-size: 14px;
+    font-size: 13px;
 }
 
 #lector{
@@ -28,5 +28,6 @@
 .card-img-top{
     border-top-right-radius: 30px!important;
     border-top-left-radius: 30px!important;
+    height: 250px;
 }
 

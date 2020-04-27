@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import { Container } from 'reactstrap';
 import { TextBox } from './TextBox';
-import { ButtonsPrevNext } from './ButtonsPrevNext';
-import { CommentBox } from './CommentBox';
-import { PaginationRow } from './Pagination';
+import { ButtonsPrevNext } from '../../Common/ButtonsPrevNext';
+import { CommentBox } from '../../Common/CommentBox';
+import { PaginationRow } from '../../Common/Pagination';
 import { Header } from './Header';
-import { Breadcrumbs } from '../../ModulPage/Breadcrumbs';
-import { TextData } from "../../Data/TextData";
+import { Breadcrumbs } from '../../Common/Breadcrumbs';
+import { TextData } from "../../../Data/TextData";
 
 export class ModulDetailPageText extends Component{
     

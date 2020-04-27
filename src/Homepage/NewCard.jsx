@@ -23,7 +23,7 @@ export function NewCard(props) {
          
               <Card.Img
                 variant="top"
-                src= {item.image} />
+                src= {item.image}/>
               <Card.Body>
                 <div class="container">
                   <div class="row">

@@ -8,8 +8,16 @@ import { Summary } from "./Summary";
 import { Instructor } from "./Instructor";
 import { Schedule } from "./Schedule";
 import "./ModulForm.css";
-import { Breadcrumbs } from "../../ModulPage/Breadcrumbs";
+import { Breadcrumbs } from "../Common/Breadcrumbs";
 import { ModulData } from "../../Data/ModuleData";
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams,
+  useRouteMatch
+} from "react-router-dom";
 
 
 export class ModulForm extends Component {
@@ -31,8 +39,11 @@ export class ModulForm extends Component {
       });
     console.log(promise);
   }
+  
   render() {
-    console.log(this);
+    console.log("modulForm", this);
+    let url = window.location.href;
+    
     return (
       <Container>
         {/* Stack the columns on mobile by making one full-width and the other half-width */}
@@ -51,7 +62,7 @@ export class ModulForm extends Component {
           <Col xs={6} md={4}>
             <Container>
               <Row>
-                <Button type="button" href="/detailText">
+                <Button type="button"  href={`${url}/lessons/001`}>
                   Start the course
                 </Button>
               </Row>

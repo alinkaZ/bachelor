@@ -3,7 +3,7 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import FormControl from 'react-bootstrap/FormControl';
 import Card from 'react-bootstrap/Card';
 import Button from 'react-bootstrap/Button';
-import { WordInput } from "../WordInput";
+import { WordInput } from "../CommonAdmin/WordInput";
 import AddPictureIcon from "../../../src/Assets/plus.png";
 import "./AdminHomePage.css";
 
