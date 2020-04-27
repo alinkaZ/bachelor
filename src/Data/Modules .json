@@ -4,39 +4,29 @@
       lecturer: "Erika Gubrium",
       timing: 60,
       name: "It will be name of the module",
-      link: "http://google.com",
+     
     },
     {
       image: "https://i.etsystatic.com/17072610/r/il/4dc22f/1427703510/il_570xN.1427703510_kqct.jpg",
       lecturer: "Aadne Gorstad",
       timing: 160,
       name: "It will be next name of the module",
-      link: "http://google.com",
+     
     },
     {
       image: "https://lh3.googleusercontent.com/proxy/tArqK5eyuHjq8eh7GwMBghsDtXSRFrEvGsuhXhpHQHiJNnBSYCfggaqmCAt7Yr3wrg0IrElUPVaGv3J1ypKMol7-E88nogk0WF6o",
       lecturer: "Alina Zielinska",
       timing: 120,
       name: "It will be next next name of the module",
-      link: "http://google.com",
+     
     },
     {
       image: "https://lh3.googleusercontent.com/proxy/tArqK5eyuHjq8eh7GwMBghsDtXSRFrEvGsuhXhpHQHiJNnBSYCfggaqmCAt7Yr3wrg0IrElUPVaGv3J1ypKMol7-E88nogk0WF6o",
       lecturer: "Alina Zielinska",
       timing: 120,
       name: "It will be next next name of the module",
-      link: "http://google.com",
+     
     }
   ]
 
-       {/*<div className="cards">
-        {modules.map(module => (
-        <ModuleCard
-          image={module.image}
-          lecturer={module.lecturer}
-          timing={module.timing}
-          name={module.name}
-          link={module.link}
-        />
-      ))}
-    </div> */}
+ 

@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import { Pagination, Container } from 'reactstrap';
-import { ButtonsPrevNext } from '../ModulDetailPageText/ButtonsPrevNext';
-import { CommentBox } from '../ModulDetailPageText/CommentBox';
-import { PaginationRow } from '../ModulDetailPageText/Pagination';
+import { ButtonsPrevNext } from '../../Common/ButtonsPrevNext';
+import { CommentBox } from '../../Common/CommentBox';
+import { PaginationRow } from '../../Common/Pagination';
 import { Video } from './Video';
 import { Header } from '../ModulDetailPageText/Header';
-import { Breadcrumbs } from '../../ModulPage/Breadcrumbs';
+import { Breadcrumbs } from '../../Common/Breadcrumbs';
 
 export class ModulDetailPageVideo extends Component{
     render(){

@@ -4,12 +4,12 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { Breadcrumbs } from "../../ModulPage/Common/Breadcrumbs";
 import { ButtonGroupAdmin } from "../CommonAdmin/ButtonGroupAdmin";
-import { WordInput } from "../CommonAdmin/WordInput";
 import { PaginationRow } from "../../ModulPage/Common/Pagination";
 import { SaveDelete } from "../CommonAdmin/SaveDelete";
+import { Question } from "../AdminModulQuizPage/Question";
 
 
-export class AdminModulDetailPageText extends Component {
+export class AdminModulDetailPageQuiz extends Component {
   render() {
     return (
       <Container>
@@ -26,7 +26,7 @@ export class AdminModulDetailPageText extends Component {
           </Col>
         </Row>
         <Row>
-          <WordInput rows="20" />
+          <Question/>
         </Row>
         <Row>
           <Col xs={12} md={11}>

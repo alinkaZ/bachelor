@@ -1,5 +1,5 @@
 import React from 'react';
-import './InfoMainPage.css';
+
 
 export function InfoMainPage (){
     return(

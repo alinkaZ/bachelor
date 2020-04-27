@@ -3,7 +3,7 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { WordInput } from "../WordInput";
+import { WordInput } from "../CommonAdmin/WordInput";
 import { SummaryAdmin } from "./SummaryAdmin";
 import { InstructorAdmin } from "./InstructorAdmin";
 import { ScheduleAdmin } from "./ScheduleAdmin";

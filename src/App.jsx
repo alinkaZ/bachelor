@@ -10,14 +10,14 @@ import { CardModules } from "./Homepage/CardModules";
 import { ModulForm } from "./ModulPage/ModulMainPage/ModulForm";
 import { AboutPage } from "./AboutPage/AboutPage";
 import { LoginPage } from "./LoginPage/LoginPage";
-import { ModulDetailPageText } from "./ModulPage/ModulDetailPageText/ModulDetailPageText";
-import { ModulDetailPageVideo } from "./ModulPage/ModulDetailPageVideo/ModulDetailPageVideo";
-import { ModulDetailPageQuiz } from "./ModulPage/ModulDetailPageQuiz/ModulDetailPageQuiz";
+
 import { Finish } from "./ModulPage/Finish/Finish";
 import { CardModulesAdmin } from "./ModulPageAdmin/AdminHomePage/AdminHomePage";
 import { AdminModulMainPage } from "./ModulPageAdmin/AdminModulMainPage/AdminModulMainPage";
 import { AdminModulDetailPageText } from "./ModulPageAdmin/AdminModulDetailPageText/AdminModulDetailPageText";
 import { AdminModulDetailPageVideo } from "./ModulPageAdmin/AdminModulDetailPageVideo/AdminModulDetailPageVideo";
+import { lessonsData } from "./Data/LessonsData";
+import { ModulDetailLesson } from "./ModulPage/ModulDetailLesson/ModulDetailLesson";
 
 export default class App extends Component {
   render() {
@@ -29,13 +29,25 @@ export default class App extends Component {
         <Route path="/login" component={LoginPage} />
         <Route path="/modules" exact component={CardModules} />
         <Route path="/about" component={AboutPage} />
-        <Route path={"/modules/:modulId"}>
+        <Route exact path={"/modules/:modulId"}>
             <ModulForm/>
         </Route>
-        <Route path="/detailText" component={ModulDetailPageText} />
-        <Route path="/video" component={ModulDetailPageVideo} />
-        <Route path="/quiz" component={ModulDetailPageQuiz} />
-        <Route path="/finish" component={Finish} />
+       
+
+        <Route exact path="/modules/:modulId/lessons/:lessonId">
+            <ModulDetailLesson/>
+        </Route>
+        {/*<Route exact path={"/modules/:modulId/:lessonId"}>
+            <ModulDetailPageVideo/>
+        </Route>
+        <Route exact path={"/modules/:modulId/:lessonId"}>
+            <ModulDetailPageQuiz/>
+        </Route>*/}
+
+        <Route exact path={"/modules/:modulId/:finishId"}>
+            <Finish/>
+        </Route>
+              
         <Route path="/admin" component={CardModulesAdmin} />
         <Route path="/create" component={AdminModulMainPage} />
         <Route path="/adminText" component={AdminModulDetailPageText} />
