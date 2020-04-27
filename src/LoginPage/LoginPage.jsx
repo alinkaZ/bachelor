@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import Form from "react-bootstrap/Form";
+//import Form from "react-bootstrap/Form";
+
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -7,19 +8,29 @@ import { Container } from "reactstrap";
 import "./LoginPage.css";
 import Facebook from "./components/Facebook";
 import authProvider from "../utils/auth/authProvider";
+import { authenticationService } from "../utils/auth/authentication.service";
 import { FormErrors } from "./components/FormErrors";
+import RegisterModalForm from "./components/RegisterModalForm"
+import { Formik, Field, Form, ErrorMessage } from 'formik';
+import * as Yup from 'yup';
+
+
+
 
 export class LoginPage extends Component {
   constructor(){
     super();
+
     this.state = {
       email: '',
       password: '',
       formErrors: {email: '', password: ''},
       emailValid: false,
       passwordValid: false,
-      formValid: false
+      formValid: false,
+      modalShow: false
     }
+  //
   }
 
   handleUserInput = (e) => {
@@ -47,91 +58,88 @@ export class LoginPage extends Component {
     return(0)
   }
 
-  validateField(fieldName, value) {
-
-    let fieldValidationErrors = this.state.formErrors;
-    let emailValid = this.state.emailValid;
-    let passwordValid = this.state.passwordValid;switch(fieldName) {
-      case 'email':
-        emailValid = value.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i);
-        fieldValidationErrors.email = emailValid ? '' : ' is invalid';
-        break;
-      case 'password':
-        passwordValid = value.length >= 6;
-        fieldValidationErrors.password = passwordValid ? '': ' is too short';
-        break;
-      default:
-        break;
-    }
-    this.setState({formErrors: fieldValidationErrors,
-                    emailValid: emailValid,
-                    passwordValid: passwordValid
-                  }, this.validateForm);
-    }validateForm() {
-      this.setState({formValid: this.state.emailValid &&
-                                this.state.passwordValid});
+  setModalShow (modalShow) {
+    this.setState({
+      modalShow: modalShow
+    })
   }
 
+
+
+
   render() {
+    // const [modalShow, setModalShow] = React.useState(false);
+
     return (
       <Container>
         <Row>
           <Col xm={12} xs={4}></Col>
           <Col xm={12} xs={4}>
-            <Form>
-              <h1 className="loginh1">Log in</h1>
-              <Form.Group controlId="formBasicEmail">
-                <Form.Label>Email address</Form.Label>
-                <div className="panel panel-default">
-                  <FormErrors formErrors={this.state.formErrors} />
-                </div>
-
-                <Form.Control
-                  type="email"
-                  placeholder="Enter email"
-                  value={this.state.email}
-                  onChange={this.handleUserInput}
+            <Formik
+                    initialValues={{
+                        email: '',
+                        password: ''
+                    }}
+                    validationSchema={Yup.object().shape({
+                        email: Yup.string().required('Email is required'),
+                        password: Yup.string().required('Password is required')
+                    })}
+                    onSubmit={({ email, password }, { setStatus, setSubmitting }) => {
+                      console.log("email", email, "password", password);
+                        setStatus();
+                        authenticationService.login(email, password)
+                            .then(
+                                user => {
+                                    const { from } = this.props.location.state || { from: { pathname: "/" } };
+                                    this.props.history.push(from);
+                                },
+                                error => {
+                                    setSubmitting(false);
+                                    setStatus(error);
+                                }
+                            );
+                    }}
+                    render={({ errors, status, touched, isSubmitting }) => (
+                        <Form>
+                            <div className="form-group">
+                                <label htmlFor="email">Email</label>
+                                <Field name="email" type="text" className={'form-control' + (errors.email && touched.email ? ' is-invalid' : '')} />
+                                <ErrorMessage name="email" component="div" className="invalid-feedback" />
+                            </div>
+                            <div className="form-group">
+                                <label htmlFor="password">Password</label>
+                                <Field name="password" type="password" className={'form-control' + (errors.password && touched.password ? ' is-invalid' : '')} />
+                                <ErrorMessage name="password" component="div" className="invalid-feedback" />
+                            </div>
+                            <div className="form-group">
+                              <Field name="checkOut" type="checkbox" />
+                              <label htmlFor="checkOut">Check me out</label>
+                            </div>
+                            <div className="form-group">
+                              <Row>
+                              <Button
+                                type="submit"
+                                className="btn btn-primary"
+                                disabled={isSubmitting}
+                              >
+                                Submit
+                              </Button>
+                              <Button
+                                variant="primary"
+                                size="lg"
+                                onClick={() => {this.setModalShow(true)}}
+                              >
+                                Register
+                              </Button>
+                              <RegisterModalForm
+                                show={this.state.modalShow}
+                                onHide={() => {this.setModalShow(false)}}
+                              />
+                          </Row>
+                            </div>
+                        </Form>
+                    )}
                 />
-                <Form.Text className="text-muted">
-                  We'll never share your email with anyone else.
-                </Form.Text>
-              </Form.Group>
-
-              <Form.Group controlId="formBasicPassword">
-                <Form.Label>Password</Form.Label>
-                <Form.Control
-                  type="password"
-                  placeholder="Password"
-                  value={this.state.password}
-                  onChange={this.handleUserInput}
-                />
-              </Form.Group>
-              <Form.Group controlId="formBasicCheckbox">
-                <Form.Check type="checkbox" label="Check me out" />
-              </Form.Group>
-              <Row>
-                <Button
-                  variant="primary"
-                  type="submit"
-                  size="lg"
-                  href="javascript:void(0)"
-                  onClick={this.LoginHandler()}
-                  disabled={!this.state.formValid}
-                >
-                  Submit
-                </Button>
-                <Button
-                  variant="primary"
-                  type="register"
-                  size="lg"
-                  onClick={this.RegisterHandler()}
-                  href="/admin"
-                  disabled={!this.state.formValid}
-                >
-                  Register
-                </Button>
-              </Row>
-            </Form>
           </Col>
           <Col xm={12} xs={4}></Col>
         </Row>
