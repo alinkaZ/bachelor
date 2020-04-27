@@ -119,6 +119,7 @@ export class LoginPage extends Component {
                               <Row>
                               <Button
                                 type="submit"
+                                href="/admin"
                                 className="btn btn-primary"
                                 disabled={isSubmitting}
                               >
