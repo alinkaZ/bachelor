@@ -5,6 +5,11 @@ import { ModulDetailPageQuiz } from "./ModulDetailPageQuiz/ModulDetailPageQuiz";
 import { withRouter, useParams } from "react-router";
 import PropTypes from "prop-types";
 import { lessonsData } from "../../Data/LessonsData";
+import { Container } from "reactstrap";
+import { ButtonsPrevNext } from "../Common/ButtonsPrevNext";
+import { CommentBox } from "../Common/CommentBox";
+import { PaginationRow } from "../Common/Pagination";
+import { Breadcrumbs } from "../Common/Breadcrumbs";
 
 const ChangeLesson_STATES = {
   text: <ModulDetailPageText />,
@@ -17,15 +22,17 @@ function ChangeLesson({ status }) {
 }
 
 function ModulLessonContent(param) {
-  switch (param) {
-    case param == "text":
-      return <ModulDetailPageText />;
+  switch (param.type) {
+    case "text":
+      return <ModulDetailPageText info={param} />;
 
-    case param == "video":
-      return <ModulDetailPageVideo />;
+    case "video":
+      return <ModulDetailPageVideo info={param} />;
 
-    case param == "quiz":
-      return <ModulDetailPageQuiz />;
+    case "quiz":
+      return <ModulDetailPageQuiz info={param} />;
+    default:
+      return "Modul not found";
   }
 }
 
@@ -37,18 +44,28 @@ export function ModulDetailLesson() {
 
   let { modulId, lessonId } = useParams();
   // modulId = modulId * 1; //become as a number
-  //lessonId = lessonId * 1;
+  lessonId = lessonId * 1;
   console.log(modulId, lessonId);
 
-  var lessonFilterResult = lessonsData.filter(function (item) {
+  /*var lessonFilterResult = lessonsData.filter(function (item) {
     return item.id === lessonId && item.modulId === modulId;
-  });
-  if (lessonFilterResult.length > 0) {
-    let lesson = lessonFilterResult[0];
-    return ChangeLesson({ status: lesson.type });
+  });*/
+
+  if (lessonsData.length >= lessonId) {
+    let lesson = lessonsData[lessonId - 1];
+    return (
+      <Container>
+        <Breadcrumbs />
+        <PaginationRow />
+        {ModulLessonContent(lesson)}
+        <ButtonsPrevNext />
+        <CommentBox />
+      </Container>
+    );
   } else {
-    return <div>here should be smth</div>;
+    console.error("Error: We are trying to get lesson out of the arr");
+    return <div>Sorry such lesson does not exist</div>;
   }
-  console.log(lessonFilterResult);
+  //console.log(lessonFilterResult);
 }
 const ShowTheLocationWithRouter = withRouter(ModulDetailLesson);

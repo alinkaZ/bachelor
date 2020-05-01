@@ -75,6 +75,7 @@ export class LoginPage extends Component {
         <Row>
           <Col xm={12} xs={4}></Col>
           <Col xm={12} xs={4}>
+            <h2 className="loginh2">Log in</h2>
             <Formik
                     initialValues={{
                         email: '',
@@ -118,7 +119,8 @@ export class LoginPage extends Component {
                             <div className="form-group">
                               <Row>
                               <Button
-                                type="submit"
+                                variant="primary"
+                                size="lg"
                                 href="/admin"
                                 className="btn btn-primary"
                                 disabled={isSubmitting}
