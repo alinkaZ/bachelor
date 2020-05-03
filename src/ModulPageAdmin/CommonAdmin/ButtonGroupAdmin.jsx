@@ -9,7 +9,7 @@ export class ButtonGroupAdmin extends Component {
       <ButtonGroup vertical>
         <Button className="btn-admin" href="/textAdmin">Text</Button>
         <Button className="btn-admin" href="/videoAdmin">Video</Button>
-        <Button className="btn-admin">Quiz</Button>
+        <Button className="btn-admin" href="/quizAdmin">Quiz</Button>
       </ButtonGroup>
     );
   }

@@ -32,7 +32,7 @@ export class AdminModulMainPage extends Component {
           <Col xs={6} md={4}>
             <Container>
               <Row>
-                <Button type="button" href="/adminText">
+                <Button type="button" href="/textAdmin">
                   Add a content
                 </Button>
               </Row>

@@ -20,8 +20,8 @@ export class AdminModulDetailPageQuiz extends Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={3}></Col>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={5}></Col>
+          <Col xs={12} md={1}>
             <PaginationRow />
           </Col>
         </Row>

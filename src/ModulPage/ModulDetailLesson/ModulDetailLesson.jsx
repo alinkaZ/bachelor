@@ -10,6 +10,8 @@ import { ButtonsPrevNext } from "../Common/ButtonsPrevNext";
 import { CommentBox } from "../Common/CommentBox";
 import { PaginationRow } from "../Common/Pagination";
 import { Breadcrumbs } from "../Common/Breadcrumbs";
+import { Header } from "../Common/Header";
+
 
 const ChangeLesson_STATES = {
   text: <ModulDetailPageText />,
@@ -53,10 +55,12 @@ export function ModulDetailLesson() {
 
   if (lessonsData.length >= lessonId) {
     let lesson = lessonsData[lessonId - 1];
+    console.log (lesson);
     return (
       <Container>
         <Breadcrumbs />
         <PaginationRow />
+        <Header title={lesson.title}/>
         {ModulLessonContent(lesson)}
         <ButtonsPrevNext />
         <CommentBox />

@@ -5,9 +5,11 @@ import './Header.css';
  
  export class Header extends Component{
     render(){
+        console.log (this.props);
         return(
             <div className='header'>
-                <h1>{this.props.TextDataHeader}</h1>
+                <h1>{this.props.title}</h1>
+                
                 {/*The Norwegian Welfare State*/}
             </div>
         );

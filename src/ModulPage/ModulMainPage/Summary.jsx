@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Table from "react-bootstrap/Table";
+import "../ModulMainPage/Summary.css";
 
 //<button type="button" class="btn btn-secondary btn-lg">Large button</button>
 
@@ -8,7 +9,7 @@ export class Summary extends Component {
     console.log("propsSummary", this.props);
     return (
       <Table responsive>
-        <tbody>
+        <tbody className="summary">
           <tr>
             <td>Duration</td>
             <td>{this.props.dataSummary.duration} min</td>

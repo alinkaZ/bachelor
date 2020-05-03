@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 
-import { Header } from "../ModulDetailPageText/Header";
+import { Header } from "../../Common/Header";
 import { Question } from "./Question";
 
 import { PopUpCorrectAnswer } from "./PopUpCorrectAnswer";
@@ -11,7 +11,7 @@ export class ModulDetailPageQuiz extends Component {
     return (
       <>
         
-        <Header />
+        {/*<Header />*/}
         {quizData.map((item) => {
           return (
             <>

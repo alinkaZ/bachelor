@@ -19,23 +19,27 @@ export class AdminModulDetailPageVideo extends Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={3}></Col>
-          <Col xs={12} md={6}>
+          <Col xs={12} md={4}></Col>
+          <Col xs={12} md={4}>
             <PaginationRow />
           </Col>
         </Row>
         <Row>
+        <Col xs={12} md={4}></Col>
+          <Col xs={12} md={4}>
           <Form>
             <Form.File
               id="custom-file-translate-scss"
-              label="Custom file input"
+              label="Upload your video file"
               lang="en"
               custom
             />
           </Form>
+          </Col>
         </Row>
+        <Row></Row>
         <Row>
-          <Col xs={12} md={11}>
+          <Col xs={12} md={12}>
             <SaveDelete />
           </Col>
         </Row>

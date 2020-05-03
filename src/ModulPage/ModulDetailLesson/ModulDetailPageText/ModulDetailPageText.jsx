@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { TextData } from "../../../Data/TextData";
-import { Header } from './Header';
+import { Header } from '../../Common/Header';
 import { TextBox } from './TextBox';
 
 
@@ -11,7 +11,7 @@ export class ModulDetailPageText extends Component{
         
         return(
             <>
-                <Header TextDataHeader={TextData.title}/>
+               {/* <Header TextDataHeader={TextData.title}/>*/}
                 <TextBox TextDataBox={TextData.description}/>
 
             </>

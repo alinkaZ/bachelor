@@ -18,40 +18,33 @@ import { AdminModulDetailPageText } from "./ModulPageAdmin/AdminModulDetailPageT
 import { AdminModulDetailPageVideo } from "./ModulPageAdmin/AdminModulDetailPageVideo/AdminModulDetailPageVideo";
 import { lessonsData } from "./Data/LessonsData";
 import { ModulDetailLesson } from "./ModulPage/ModulDetailLesson/ModulDetailLesson";
+import { AdminModulDetailPageQuiz } from "../src/ModulPageAdmin/AdminModulQuizPage/AdminModulQuizPage";
 
 export default class App extends Component {
   render() {
-    const sessionToken = localStorage.getItem('sessionToken')
+    const sessionToken = localStorage.getItem("sessionToken");
     return (
       <Layout>
         <Switch>
-        <Route exact path="/" component={LoginPage} />
-        <Route path="/login" component={LoginPage} />
-        <Route path="/modules" exact component={CardModules} />
-        <Route path="/about" component={AboutPage} />
-        <Route exact path={"/modules/:modulId"}>
-            <ModulForm/>
-        </Route>
-       
+          <Route exact path="/" component={LoginPage} />
+          <Route path="/login" component={LoginPage} />
+          <Route path="/modules" exact component={CardModules} />
+          <Route path="/about" component={AboutPage} />
+          <Route exact path={"/modules/:modulId"}>
+            <ModulForm />
+          </Route>
+          <Route exact path="/modules/:modulId/lessons/:lessonId">
+            <ModulDetailLesson />
+          </Route>
+          <Route exact path={"/modules/:modulId/:finishId"}>
+            <Finish />
+          </Route>
 
-        <Route exact path="/modules/:modulId/lessons/:lessonId">
-            <ModulDetailLesson/>
-        </Route>
-        {/*<Route exact path={"/modules/:modulId/:lessonId"}>
-            <ModulDetailPageVideo/>
-        </Route>
-        <Route exact path={"/modules/:modulId/:lessonId"}>
-            <ModulDetailPageQuiz/>
-        </Route>*/}
-
-        <Route exact path={"/modules/:modulId/:finishId"}>
-            <Finish/>
-        </Route>
-              
-        <Route path="/admin" component={CardModulesAdmin} />
-        <Route path="/create" component={AdminModulMainPage} />
-        <Route path="/adminText" component={AdminModulDetailPageText} />
-        <Route path="/videoAdmin" component={AdminModulDetailPageVideo} />
+          <Route path="/admin" component={CardModulesAdmin} />
+          <Route path="/create" component={AdminModulMainPage} />
+          <Route path="/textAdmin" component={AdminModulDetailPageText} />
+          <Route path="/videoAdmin" component={AdminModulDetailPageVideo} />
+          <Route path="/quizAdmin" component={AdminModulDetailPageQuiz} />
         </Switch>
       </Layout>
     );
