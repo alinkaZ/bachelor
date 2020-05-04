@@ -1,7 +1,7 @@
-img.addAnswer{
+img.addAnswer, img.addQuestion{
     align-content: center;
     height: 30px;
     text-align: center;
-    margin: 0 auto;
+    margin: 10px auto;
    
 }

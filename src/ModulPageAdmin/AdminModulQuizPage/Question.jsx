@@ -10,34 +10,38 @@ import Col from "react-bootstrap/Col";
 import "../AdminModulQuizPage/Question.css";
 
 export class Question extends Component {
+  initValue;
   constructor(props) {
     super(props);
 
-    this.state = {
-      numChildren: 0,
-      name: "",
-      explanation: "",
-      answers: [],
-      newAnswer: { name: "", isRight: false },
-    };
+    this.state = props.data;
+    this.initValue = props.data;
+
     console.log(this);
     this.addQuestion = this.addQuestion.bind(this);
     this.addAnswer = this.addAnswer.bind(this);
     this.changeQuestionTitle = this.changeQuestionTitle.bind(this);
     this.changeQuestionExplanation = this.changeQuestionExplanation.bind(this);
     this.onChangenewAnswer = this.onChangenewAnswer.bind(this);
+    this.handleCheckboxChange = this.handleCheckboxChange.bind(this);
   }
 
   addQuestion(event) {
     console.log(this.state);
+    /*} this.setState({
+      allQuestions = [...this.state.questions, this.state.newQuestion], 
+      newQuestion: { name: "", answers: [] },
+  });*/
+    this.props.onAdd(this.state);
+    this.setState (this.initValue);
+    
   }
+
   addAnswer(event) {
     this.setState({
       answers: [...this.state.answers, this.state.newAnswer],
       newAnswer: { name: "", isRight: false },
     });
-
-    console.log(this);
   }
   changeQuestionTitle(event) {
     this.setState({ name: event.target.value });
@@ -59,12 +63,31 @@ export class Question extends Component {
       this.setState({ answers: data });
     }
   }
+
+  handleCheckboxChange(event) {
+    console.log(event.target.dataset.index, event.target.checked);
+    if (event.target.dataset.index == undefined) {
+      let answer = this.state.newAnswer;
+      answer.isRight = event.target.checked;
+      this.setState({
+        newAnswer: answer,
+      });
+    } else {
+      let data = this.state.answers;
+      data[event.target.dataset.index * 1].isRight = Boolean(
+        event.target.checked
+      );
+      this.setState({ answers: data });
+    }
+    console.log(this.state);
+  }
+
   render() {
-    const children = [];
+   /* const children = [];
 
     for (var i = 0; i < this.state.numChildren; i += 1) {
       children.push(<Question key={i} number={i} />);
-    }
+    }*/
     return (
       <>
         <InputGroup>
@@ -90,7 +113,12 @@ export class Question extends Component {
                     </Tooltip>
                   }
                 >
-                  <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+                  <InputGroup.Checkbox
+                    aria-label="Checkbox for following text input"
+                    checked={this.state.answers[index].isRight}
+                    onChange={this.handleCheckboxChange}
+                    data-index={index}
+                  />
                 </OverlayTrigger>
               </InputGroup.Prepend>
 
@@ -110,7 +138,11 @@ export class Question extends Component {
         >
           <InputGroup className="mb-3">
             <InputGroup.Prepend>
-              <InputGroup.Checkbox aria-label="Checkbox for following text input" />
+              <InputGroup.Checkbox
+                aria-label="Checkbox for following text input"
+                checked={this.state.newAnswer.isRight}
+                onChange={this.handleCheckboxChange}
+              />
             </InputGroup.Prepend>
 
             <FormControl
@@ -144,6 +176,7 @@ export class Question extends Component {
             onChange={this.changeQuestionExplanation}
           />
         </InputGroup>
+        {this.props.onAdd != null &&
         <OverlayTrigger
           overlay={
             <Tooltip id="tooltip-disabled">Add one more question</Tooltip>
@@ -151,10 +184,13 @@ export class Question extends Component {
         >
           <img
             onClick={this.addQuestion}
-            className="addAnswer"
+            className="addQuestion"
             src={AddPictureIcon}
+            /*{...state.map((item) => (
+              <Question key={item.id} name={item.name} />
+            ))}*/
           />
-        </OverlayTrigger>
+        </OverlayTrigger>} 
       </>
     );
   }

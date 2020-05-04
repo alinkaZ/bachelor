@@ -8,8 +8,35 @@ import { PaginationRow } from "../../ModulPage/Common/Pagination";
 import { SaveDelete } from "../CommonAdmin/SaveDelete";
 import { Question } from "../AdminModulQuizPage/Question";
 
-
 export class AdminModulDetailPageQuiz extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      questions: [],
+      newQuestion: {
+        name: "",
+        explanation: "",
+        answers: [],
+        newAnswer: { name: "", isRight: false },
+      },
+    };
+  }
+
+  addNewQuestion = (item) => {
+    console.log(this.state);
+    this.setState({
+      questions: [...this.state.questions, item],
+      newQuestion: {
+        name: "",
+        explanation: "",
+        answers: [],
+        newAnswer: { name: "", isRight: false },
+      },
+    });
+    console.log(this.state);
+  };
+
   render() {
     return (
       <Container>
@@ -26,11 +53,17 @@ export class AdminModulDetailPageQuiz extends Component {
           </Col>
         </Row>
         <Row>
-          <Question/>
+          {this.state.questions.map((item, index) => {
+            return <Question key ={index} data={item} />;
+          })}
         </Row>
         <Row>
+          <Question data={this.state.newQuestion} onAdd={this.addNewQuestion} />
+        </Row>
+        
+        <Row>
           <Col xs={12} md={11}>
-          <SaveDelete />
+            <SaveDelete />
           </Col>
         </Row>
       </Container>
