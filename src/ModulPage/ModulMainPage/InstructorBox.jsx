@@ -9,10 +9,10 @@ render (){
     return (
       <Container>
             <Row>
-                <Col xs={6} md={4}>
+                <Col xs={5} md={4}>
                     <img className='instructorImg' src={this.props.item.img}/>
                 </Col>
-                <Col xs={12} md={8}>
+                <Col xs={7} md={8}>
                     <div className='instructorInfo'>
                         <p>{this.props.item.name}</p>
                         <p>{this.props.item.title}</p>

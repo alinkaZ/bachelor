@@ -59,7 +59,7 @@ export class ModulForm extends Component {
             <h4>Course topics</h4>
             <Schedule id="schedule" dataSchedule={ModulData.topics} />
           </Col>
-          <Col xs={6} md={4}>
+          <Col xs={12} md={4}>
             <Container>
               <Row>
                 <Button type="button"  href={`${url}/lessons/001`}>

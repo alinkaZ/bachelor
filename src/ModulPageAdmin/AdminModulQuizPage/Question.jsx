@@ -8,6 +8,7 @@ import AddPictureIcon from "../../Assets/plus.png";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import "../AdminModulQuizPage/Question.css";
+import AddAnswerIcon from "../../Assets/plusAnswer.png";
 
 export class Question extends Component {
   initValue;
@@ -89,7 +90,7 @@ export class Question extends Component {
       children.push(<Question key={i} number={i} />);
     }*/
     return (
-      <>
+      <div className="questionForm">
         <InputGroup>
           <InputGroup.Prepend>
             <InputGroup.Text>Type in your question</InputGroup.Text>
@@ -160,7 +161,7 @@ export class Question extends Component {
           <img
             className="addAnswer"
             onClick={this.addAnswer}
-            src={AddPictureIcon}
+            src={AddAnswerIcon}
           />
         </OverlayTrigger>
         <InputGroup>
@@ -186,12 +187,9 @@ export class Question extends Component {
             onClick={this.addQuestion}
             className="addQuestion"
             src={AddPictureIcon}
-            /*{...state.map((item) => (
-              <Question key={item.id} name={item.name} />
-            ))}*/
           />
         </OverlayTrigger>} 
-      </>
+      </div>
     );
   }
 }

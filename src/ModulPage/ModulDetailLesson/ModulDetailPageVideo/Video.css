@@ -1,5 +1,5 @@
-.videoImg {
-    display: table;
-    margin: 0 auto;  
+.videoImg img {
+
+    width: 400px; 
 }
 

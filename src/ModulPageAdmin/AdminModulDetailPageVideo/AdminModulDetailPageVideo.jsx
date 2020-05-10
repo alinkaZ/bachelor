@@ -7,11 +7,17 @@ import { ButtonGroupAdmin } from "../CommonAdmin/ButtonGroupAdmin";
 import Form from "react-bootstrap/Form";
 import { PaginationRow } from "../../ModulPage/Common/Pagination";
 import { SaveDelete } from "../CommonAdmin/SaveDelete";
+import "../AdminModulDetailPageVideo/AdminVideo.css";
+import bsCustomFileInput from "bs-custom-file-input";
 
 export class AdminModulDetailPageVideo extends Component {
+  componentDidMount() {
+    bsCustomFileInput.init();
+  }
+
   render() {
     return (
-      <Container>
+      <Container fluid>
         <Row>
           <Col xs={12} md={12}>
             <Breadcrumbs />
@@ -19,23 +25,27 @@ export class AdminModulDetailPageVideo extends Component {
           </Col>
         </Row>
         <Row>
-          <Col xs={12} md={4}></Col>
-          <Col xs={12} md={4}>
+          <Col></Col>
+          <Col xs={12} md={2}>
             <PaginationRow />
           </Col>
+          <Col></Col>
         </Row>
         <Row>
-        <Col xs={12} md={4}></Col>
-          <Col xs={12} md={4}>
-          <Form>
-            <Form.File
-              id="custom-file-translate-scss"
-              label="Upload your video file"
-              lang="en"
-              custom
-            />
-          </Form>
+          <Col></Col>
+          <Col xs={12} md={6}>
+            <div className="videoBox">
+              <Form>
+                <Form.File
+                  id="custom-file-translate-scss"
+                  label=""
+                  lang="en"
+                  custom
+                />
+              </Form>
+            </div>
           </Col>
+          <Col></Col>
         </Row>
         <Row></Row>
         <Row>

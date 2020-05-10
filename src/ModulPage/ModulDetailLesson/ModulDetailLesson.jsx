@@ -3,14 +3,14 @@ import { ModulDetailPageText } from "./ModulDetailPageText/ModulDetailPageText";
 import { ModulDetailPageVideo } from "./ModulDetailPageVideo/ModulDetailPageVideo";
 import { ModulDetailPageQuiz } from "./ModulDetailPageQuiz/ModulDetailPageQuiz";
 import { withRouter, useParams } from "react-router";
-import PropTypes from "prop-types";
 import { lessonsData } from "../../Data/LessonsData";
-import { Container } from "reactstrap";
+import { Container, Row } from "reactstrap";
 import { ButtonsPrevNext } from "../Common/ButtonsPrevNext";
 import { CommentBox } from "../Common/CommentBox";
 import { PaginationRow } from "../Common/Pagination";
 import { Breadcrumbs } from "../Common/Breadcrumbs";
 import { Header } from "../Common/Header";
+import Col from "react-bootstrap/Col";
 
 
 const ChangeLesson_STATES = {
@@ -27,10 +27,8 @@ function ModulLessonContent(param) {
   switch (param.type) {
     case "text":
       return <ModulDetailPageText info={param} />;
-
     case "video":
       return <ModulDetailPageVideo info={param} />;
-
     case "quiz":
       return <ModulDetailPageQuiz info={param} />;
     default:
@@ -45,31 +43,42 @@ export function ModulDetailLesson() {
         })*/
 
   let { modulId, lessonId } = useParams();
-  // modulId = modulId * 1; //become as a number
   lessonId = lessonId * 1;
   console.log(modulId, lessonId);
 
-  /*var lessonFilterResult = lessonsData.filter(function (item) {
-    return item.id === lessonId && item.modulId === modulId;
-  });*/
-
   if (lessonsData.length >= lessonId) {
     let lesson = lessonsData[lessonId - 1];
-    console.log (lesson);
+    console.log(lesson);
     return (
       <Container>
+        <Row>
         <Breadcrumbs />
+        </Row>
+        <Row>
+          <Col></Col>
+          <Col xs={4} md={1}></Col>
         <PaginationRow />
-        <Header title={lesson.title}/>
+        <Col></Col>
+        </Row>
+        <Row>
+        <Header title={lesson.title} />
+        </Row>
+        <Row>
         {ModulLessonContent(lesson)}
+        </Row>
+        <Row>
         <ButtonsPrevNext />
+        </Row>
+        <Row>
+        <Col xs={12} md={12}>
         <CommentBox />
+        </Col>
+        </Row>
       </Container>
     );
   } else {
     console.error("Error: We are trying to get lesson out of the arr");
     return <div>Sorry such lesson does not exist</div>;
   }
-  //console.log(lessonFilterResult);
 }
 const ShowTheLocationWithRouter = withRouter(ModulDetailLesson);

@@ -1,15 +1,13 @@
 import React, { Component, useState, useRef } from "react";
 import Question from "../../../Assets/question.png";
-import Popover from 'react-bootstrap/Popover';
-import Overlay from 'react-bootstrap/Overlay';
-
-
+import Popover from "react-bootstrap/Popover";
+import Overlay from "react-bootstrap/Overlay";
 
 function Example(props) {
   const [show, setShow] = useState(false);
   const [target, setTarget] = useState(null);
   const ref = useRef(null);
-  let {text}=props;
+  let { text } = props;
   console.log(text);
 
   const handleClick = (event) => {
@@ -19,8 +17,7 @@ function Example(props) {
 
   return (
     <div ref={ref}>
-      
-      <img onClick={handleClick} style={{width:"20px"}} src={Question} />
+      <img onClick={handleClick} style={{ width: "20px" }} src={Question} />
       <Overlay
         show={show}
         target={target}
@@ -30,9 +27,7 @@ function Example(props) {
       >
         <Popover id="popover-contained">
           <Popover.Title as="h3">{text.rightAnswer}</Popover.Title>
-          <Popover.Content>
-            {text.explanation}
-          </Popover.Content>
+          <Popover.Content>{text.explanation}</Popover.Content>
         </Popover>
       </Overlay>
     </div>
@@ -41,9 +36,6 @@ function Example(props) {
 
 export class PopUpCorrectAnswer extends Component {
   render() {
-    return(
-        <Example text={this.props.dataAnswers}/>
-      );
-    
+    return <Example text={this.props.dataAnswers} />;
   }
 }

@@ -3,7 +3,7 @@ export const lessonsData = [
     id: "001",
     type: "text",
     modulId: "1",
-    title: "main idea of this cours",
+    title: "The name of this course",
     details: {
      
       text:
@@ -21,7 +21,7 @@ export const lessonsData = [
     id: "003",
     type: "quiz",
     modulId: "1",
-    title: "Main idea of this cours",
+    title: "The name of this lection",
     details: {
       quiz: [
         {
@@ -35,7 +35,7 @@ export const lessonsData = [
           ],
           tips: {
             rightAnswer: "0. this is the right answer",
-            explanation: " 0. here should be explanation of the right answer",
+            explanation: " 0. here should be an explanation of the right answer",
           },
         },
 

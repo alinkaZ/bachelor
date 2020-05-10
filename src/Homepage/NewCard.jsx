@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import "./NewCard.css";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
-import { ModulForm } from "../ModulPage/ModulMainPage/ModulForm";
 import {
   BrowserRouter as Router,
   Switch,

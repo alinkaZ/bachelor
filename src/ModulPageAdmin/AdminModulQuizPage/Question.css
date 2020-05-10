@@ -1,7 +1,19 @@
-img.addAnswer, img.addQuestion{
-    align-content: center;
-    height: 30px;
-    text-align: center;
-    margin: 10px auto;
-   
+img.addAnswer,
+img.addQuestion {
+  height: 30px;
+  text-align: center;
+  margin: 10px auto;
+}
+
+img.addQuestion {
+  margin-left: 50%;
+}
+
+.questionForm {
+  background-color: #343a40;
+  width: 60%;
+  padding: 30px;
+  margin-top: 50px;
+  margin-bottom: 10px;
+  margin-left: 20%;
 }
