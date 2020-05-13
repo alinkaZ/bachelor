@@ -13,6 +13,7 @@ export const authenticationService = {
 };
 
 function login(username, password) {
+    debugger
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -20,10 +21,11 @@ function login(username, password) {
     };
 
     //return fetch(`${config.apiUrl}/users/authenticate`, requestOptions)
-    return fetch(`http://localhost:3000/users/authenticate`, requestOptions)
+    return fetch(`https://wixapi.azurewebsites.net/api/Persons/authenticate`, requestOptions)
         .then(handleResponse)
         .then(user => {
             // store user details and jwt token in local storage to keep user logged in between page refreshes
+            console.log(user);
             localStorage.setItem('currentUser', JSON.stringify(user));
             currentUserSubject.next(user);
 

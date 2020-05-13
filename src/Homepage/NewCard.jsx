@@ -37,7 +37,7 @@ export function NewCard(props) {
 
                 <Card.Text>{item.name}</Card.Text>
                 <div className="container-button">
-                  <Button variant="primary btn-lg" href={`${url}/1`}>
+                  <Button variant="primary btn-lg" href={`${url}/${item.moduleID}`}>
                     Learn more
                   </Button>
                 </div>

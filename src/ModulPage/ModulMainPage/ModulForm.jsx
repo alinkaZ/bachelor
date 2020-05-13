@@ -24,20 +24,23 @@ export class ModulForm extends Component {
   
   constructor() {
     super();
-    this.state = { data: [] };
+    this.state = { data: [], ModulData:{} };
+    
   }
   componentDidMount() {
-    let promise = fetch("https://localhost:44363/weatherforecast");
-    promise
+    let { modulId } = this.props.match.params;
+    let promise = fetch(`https://wixapi.azurewebsites.net/api/Modules/${modulId}`);
+    
+    /*promise
       .then((value) => {
         return value.json();
       })
       .then((value) => {
         console.log(value);
 
-        this.setState({ data: value });
-      });
-    console.log(promise);
+        this.setState({ ModulData: value });
+      });*/
+    console.log(this.props);
   }
   
   render() {
@@ -50,7 +53,7 @@ export class ModulForm extends Component {
         <Row>
           <Col xs={12} md={12}>
             <Breadcrumbs />
-            <h1>{ModulData.title}</h1>
+            <h1>{this.state.ModulData.title}</h1>
           </Col>
         </Row>
         <Row>

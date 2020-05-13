@@ -1,3 +1,7 @@
 tbody, table tr, table td{
     border: 1px solid #29537d!important;
 }
+
+Form.SummaryadminTable{
+    margin-top: 20px;
+}

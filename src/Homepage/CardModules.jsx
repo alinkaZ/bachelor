@@ -4,7 +4,16 @@ import { NewCard} from './NewCard';
 import {cardData} from "../Data/CardData";
 
 export class CardModules extends Component{
+    constructor(){
+        super();
+        this.state={
+            cardData:[]
+        }
+    }
     
+    componentDidMount (){
+        fetch("https://wixapi.azurewebsites.net/api/Modules").then(x=>{return x.json()}).then (x=>{this.setState({cardData:x})})
+    }
     render(){
     
         return(
@@ -12,7 +21,7 @@ export class CardModules extends Component{
             <InfoMainPage/>
             <div className='cards'>     
               {
-               cardData.map((x,y)=>{
+               this.state.cardData.map((x,y)=>{
                 return <NewCard cardData={x}/>;
                })         
               }   

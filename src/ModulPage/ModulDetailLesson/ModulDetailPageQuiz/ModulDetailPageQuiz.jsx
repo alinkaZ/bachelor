@@ -17,17 +17,14 @@ export class ModulDetailPageQuiz extends Component {
                 <Col xs={12} md={4}>
                   <PopUpCorrectAnswer dataAnswers={item.tips} />
                 </Col>
-                
               </Row>
               <Row>
                 <Col></Col>
-               
                 <Col xs={12} md={6}>
                   <Question dataQuestions={item} />
                 </Col>
                 <Col></Col>
               </Row>
-              
             </Container>
           );
         })}

@@ -30,8 +30,8 @@ export default class App extends Component {
           <Route path="/login" component={LoginPage} />
           <Route path="/modules" exact component={CardModules} />
           <Route path="/about" component={AboutPage} />
-          <Route exact path={"/modules/:modulId"}>
-            <ModulForm />
+          <Route exact path={"/modules/:modulId"} render={(props) => <ModulForm  {...props} /> } >
+            
           </Route>
           <Route exact path="/modules/:modulId/lessons/:lessonId">
             <ModulDetailLesson />
@@ -39,7 +39,7 @@ export default class App extends Component {
           <Route exact path={"/modules/:modulId/:finishId"}>
             <Finish />
           </Route>
-
+          
           <Route path="/admin" component={CardModulesAdmin} />
           <Route path="/create" component={AdminModulMainPage} />
           <Route path="/textAdmin" component={AdminModulDetailPageText} />

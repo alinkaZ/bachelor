@@ -52,6 +52,10 @@ export class AdminModulMainPage extends Component {
               Download schedule
             </Button>
             <label htmlFor="basic-url">Describe schedule of the course </label>
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={8} xm={12}>
             <ScheduleAdmin />
           </Col>
         </Row>
@@ -106,14 +110,6 @@ export class AdminModulMainPage extends Component {
               </span>
             </OverlayTrigger>
           </Col>
-          {/*<Form>
-                    <div className="mb-3">
-                        <Form.File id="formcheck-api-regular">
-                            <Form.File.Label> Here You can download schedule to the course</Form.File.Label>
-                            <Form.File.Input />
-                        </Form.File>
-                    </div>
-                </Form>*/}
         </Row>
       </Container>
     );
