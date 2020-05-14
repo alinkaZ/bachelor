@@ -14,33 +14,33 @@ export class SummaryAdmin extends Component {
           </Form.Label>
           <Col sm="9">
             <Form.Control
-              type="password"
+              
               placeholder="Whole course duration "
             />
           </Col>
         </Form.Group>
-        <Form.Group as={Row} controlId="formPlaintextPassword">
+        <Form.Group as={Row}>
           <Form.Label column sm="3">
             Institution
           </Form.Label>
           <Col sm="9">
-            <Form.Control type="password" placeholder="Presented institution" />
+            <Form.Control  placeholder="Presented institution" />
           </Col>
         </Form.Group>
-        <Form.Group as={Row} controlId="formPlaintextPassword">
+        <Form.Group as={Row} >
           <Form.Label column sm="3">
             Subject
           </Form.Label>
           <Col sm="9">
-            <Form.Control type="password" placeholder="Define subject" />
+            <Form.Control  placeholder="Define subject" />
           </Col>
         </Form.Group>
-        <Form.Group as={Row} controlId="formPlaintextPassword">
+        <Form.Group as={Row} >
           <Form.Label column sm="3">
             Price
           </Form.Label>
           <Col sm="9">
-            <Form.Control type="password" placeholder="Price for the course" />
+            <Form.Control placeholder="Price for the course" />
           </Col>
         </Form.Group>
         <Form.Group as={Row} controlId="formPlaintextPassword">
@@ -48,7 +48,7 @@ export class SummaryAdmin extends Component {
             Language
           </Form.Label>
           <Col sm="9">
-            <Form.Control type="password" placeholder="Couse's main language" />
+            <Form.Control placeholder="Couse's main language" />
           </Col>
         </Form.Group>
       </Form>

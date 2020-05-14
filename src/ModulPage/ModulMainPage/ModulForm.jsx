@@ -10,27 +10,27 @@ import { Schedule } from "./Schedule";
 import "./ModulForm.css";
 import { Breadcrumbs } from "../Common/Breadcrumbs";
 import { ModulData } from "../../Data/ModuleData";
+import { apiService } from "../../utils/API/apiService";
 import {
   BrowserRouter as Router,
   Switch,
   Route,
   Link,
   useParams,
-  useRouteMatch
+  useRouteMatch,
 } from "react-router-dom";
 
-
 export class ModulForm extends Component {
-  
   constructor() {
     super();
-    this.state = { data: [], ModulData:{} };
-    
+    this.state = { data: [], ModulData: {} };
   }
   componentDidMount() {
     let { modulId } = this.props.match.params;
-    let promise = fetch(`https://wixapi.azurewebsites.net/api/Modules/${modulId}`);
-    
+    apiService
+      .getModuleByID(modulId)
+      .then((data) => this.setState({ ModulData: data }));
+
     /*promise
       .then((value) => {
         return value.json();
@@ -40,13 +40,14 @@ export class ModulForm extends Component {
 
         this.setState({ ModulData: value });
       });*/
+
     console.log(this.props);
   }
-  
+
   render() {
     console.log("modulForm", this);
     let url = window.location.href;
-    
+
     return (
       <Container>
         {/* Stack the columns on mobile by making one full-width and the other half-width */}
@@ -60,12 +61,12 @@ export class ModulForm extends Component {
           <Col xs={12} md={8}>
             <InfoModul />
             <h4>Course topics</h4>
-            <Schedule id="schedule" dataSchedule={ModulData.topics} />
+            <Schedule id="schedule" dataSchedule={ModulData.topics} /> {/*<this.state add when it will be on the API*/} 
           </Col>
           <Col xs={12} md={4}>
             <Container>
               <Row>
-                <Button type="button"  href={`${url}/lessons/001`}>
+                <Button type="button" href={`${url}/lessons/001`}>
                   Start the course
                 </Button>
               </Row>
@@ -73,7 +74,7 @@ export class ModulForm extends Component {
                 <Summary dataSummary={ModulData} />
               </Row>
               <Row>
-                <Instructor dataInstructors={ModulData.lectors}/>
+                <Instructor dataInstructors={ModulData.lectors} />
               </Row>
             </Container>
           </Col>

@@ -1,7 +1,7 @@
 import { BehaviorSubject } from 'rxjs';
 
 //import config from 'config';
-import { handleResponse } from './handle-response.js';
+import { handleResponse } from '../handle-response.js';
 
 const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
 
@@ -13,7 +13,7 @@ export const authenticationService = {
 };
 
 function login(username, password) {
-    debugger
+    
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

@@ -9,15 +9,13 @@ import "./AdminHomePage.css";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import Form from "react-bootstrap/Form";
-import {authenticationService} from "../../utils/auth/authentication.service";
+import { authenticationService } from "../../utils/auth/authentication.service";
 
 export class CardModulesAdmin extends Component {
-
-  componentDidMount()
- {
-  console.log(authenticationService.currentUserValue)
- } 
- render() {
+  componentDidMount() {
+    console.log(authenticationService.currentUserValue);
+  }
+  render() {
     return (
       <>
         <WordInput />
@@ -34,13 +32,11 @@ export class CardModulesAdmin extends Component {
               </Tooltip>
             }
           >
-            
             <img
               onclick="Add_Picture()"
               className="addIcon"
               src={AddPictureIcon}
             />
-            
           </OverlayTrigger>
           <Card.Body>
             <Card.Title>New Course</Card.Title>
