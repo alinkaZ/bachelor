@@ -26,6 +26,15 @@ export class CardModulesAdminDelete extends Component {
       }
     );
   }
+  updateList=(event)=>{
+    apiService.modules().then(
+      (data) => {
+        this.setState({ cardData: data });
+      },
+      (error) => {
+      }
+    );
+  }
   render() {
     return (
       <>
@@ -33,7 +42,7 @@ export class CardModulesAdminDelete extends Component {
         <div className="cards">
           {this.state.cardData.map((x, y) => {
             
-            return <CardAdmin cardData={x} />;
+            return <CardAdmin key={x.moduleID} cardData={x} onDelete={this.updateList}/>;
          
           })}
         </div>

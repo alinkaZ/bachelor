@@ -30,18 +30,21 @@ export default class App extends Component {
           <Route path="/login" component={LoginPage} />
           <Route path="/modules" exact component={CardModules} />
           <Route path="/about" component={AboutPage} />
-          <Route exact path={"/modules/:modulId"} render={(props) => <ModulForm  {...props} /> } >
-            
-          </Route>
+          <Route
+            exact
+            path={"/modules/:modulId"}
+            render={(props) => <ModulForm {...props} />}
+          ></Route>
           <Route exact path="/modules/:modulId/lessons/:lessonId">
             <ModulDetailLesson />
           </Route>
-          <Route exact path={"/modules/:modulId/:finishId"}>
+          <Route exact path={"/modules/:modulId/finish"}>
             <Finish />
           </Route>
-          
+
           <Route path="/admin" component={CardModulesAdmin} />
           <Route path="/create" component={AdminModulMainPage} />
+          <Route exact path="/modules/:modulId/edit" component={AdminModulMainPage}/>
           <Route path="/textAdmin" component={AdminModulDetailPageText} />
           <Route path="/videoAdmin" component={AdminModulDetailPageVideo} />
           <Route path="/quizAdmin" component={AdminModulDetailPageQuiz} />

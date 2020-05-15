@@ -15,39 +15,61 @@ import { apiService } from "../../utils/API/apiService";
 //import Form from 'react-bootstrap/Form';
 
 export class AdminModulMainPage extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
-      moduleID: 0,
-      teacherID: 5,
-      adminID: 5,
-      institution: "string",
-      description: "string",
-      language: "string",
-      title: "string",
-      picture: "string",
-      price: 0,
-      duration: 0,
+      data: {
+        moduleID: 0,
+        teacherID: 5,
+        adminID: 5,
+        institution: "",
+        description: "",
+        language: "",
+        title: "",
+        picture: "",
+        price: 0,
+        duration: 0,
+      },
     };
+  }
+  componentDidMount() {
+    debugger;
+    console.log(this.props.match);
+    let { modulId } = this.props.match.params;
+    if (modulId != null) {
+      apiService
+        .getModuleByID(modulId)
+        .then((data) => this.setState({ data: data }));
+      console.log(this.props);
+    }
   }
 
   changeState = (event) => {
     let s = {};
     let field = event.target.id;
     s[field] = event.target.value;
-    this.setState(s);
+    this.setState({ data: s });
   };
   saveModul = (event) => {
-    apiService.createModule(this.state).then((x) => {
-      console.log(x);
-    });
+    if (this.state.data.modulID == 0) {
+      apiService.createModule(this.state.data).then((x) => {
+        console.log(x);
+      });
+    } else {
+      apiService
+        .updateModuleByID(this.state.data.moduleID, this.state.data)
+        .then((x) => {
+          console.log(x);
+        });
+    }
   };
   updateState = (data) => {
-    this.setState(data);
+    this.setState({ data: data });
     console.log(data);
   };
 
   render() {
+    let { modulId } = this.props.match.params;
     return (
       <Container>
         <Row>
@@ -59,7 +81,7 @@ export class AdminModulMainPage extends Component {
               <FormControl
                 as="textarea"
                 aria-label="With textarea"
-                value={this.state.title}
+                value={this.state.data.title}
                 onChange={this.changeState}
                 id="title"
                 rows="2"
@@ -76,7 +98,7 @@ export class AdminModulMainPage extends Component {
               <FormControl
                 as="textarea"
                 aria-label="With textarea"
-                value={this.state.description}
+                value={this.state.data.description}
                 onChange={this.changeState}
                 id="description"
                 rows="14"
@@ -95,10 +117,18 @@ export class AdminModulMainPage extends Component {
               </Row>
               <Row>
                 <br />
-                <SummaryAdmin value={this.state} onChange={this.updateState} />
+                {(modulId == this.state.data.moduleID || modulId == null) && (
+                  <SummaryAdmin
+                    value={this.state.data}
+                    onChange={this.updateState}
+                  />
+                )}
               </Row>
               <Row>
-                <InstructorAdmin data={this.state.value} />
+                <InstructorAdmin
+                  data={this.state.data.value}
+                  onChange={this.updateState}
+                />
               </Row>
             </Container>
           </Col>

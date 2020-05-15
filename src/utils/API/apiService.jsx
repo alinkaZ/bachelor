@@ -8,6 +8,8 @@ export const apiService = {
   modules,
   getModuleByID,
   createModule,
+  deleteModuleByID,
+  updateModuleByID,
 };
 
 function modules() {
@@ -73,3 +75,47 @@ function createModule(modulData) {
     });
 }
 
+function deleteModuleByID(modulId) {
+  const requestOptions = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authenticationService.currentUserValue.token}`,
+    },
+  };
+
+  return fetch(
+    `https://wixapi.azurewebsites.net/api/Modules/${modulId}`,
+    requestOptions
+  )
+    .then(handleResponse)
+    .then((data) => {
+      // store user details and jwt token in local storage to keep user
+      // logged in between page refreshes
+      console.log(data);
+      return data;
+    });
+}
+
+function updateModuleByID(modulId, data) {
+  const requestOptions = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authenticationService.currentUserValue.token}`,
+    },
+    body: JSON.stringify(data)
+  };
+
+  return fetch(
+    `https://wixapi.azurewebsites.net/api/Modules/${modulId}`,
+    requestOptions
+  )
+    .then(handleResponse)
+    .then((data) => {
+      // store user details and jwt token in local storage to keep user
+      // logged in between page refreshes
+      console.log(data);
+      return data;
+    });
+}

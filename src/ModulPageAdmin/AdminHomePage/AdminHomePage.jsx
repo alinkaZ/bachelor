@@ -11,8 +11,10 @@ import Tooltip from "react-bootstrap/Tooltip";
 import Form from "react-bootstrap/Form";
 import { authenticationService } from "../../utils/auth/authentication.service";
 import { apiService } from "../../utils/API/apiService";
-
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { CardModulesAdminDelete } from "../../ModulPageAdmin/AdminHomePage/AdminPanelCards/CardModulesAdmin";
+import Image from "../../Assets/image.png";
 
 
 export class CardModulesAdmin extends Component {
@@ -20,9 +22,11 @@ export class CardModulesAdmin extends Component {
   render() {
     return (
       <>
+     
+        <Row>
         <WordInput />
-       
-         
+        </Row>
+        <Row>
         <Card style={{ width: "16rem", height: "25rem" }}>
           <Card.Img
             variant="top"
@@ -32,14 +36,14 @@ export class CardModulesAdmin extends Component {
           <OverlayTrigger
             overlay={
               <Tooltip id="tooltip-disabled">
-                Add a picture for your Modul
+                You can add a picture to your Modul on the next Page
               </Tooltip>
             }
           >
             <img
               onclick="Add_Picture()"
               className="addIcon"
-              src={AddPictureIcon}
+              src={Image}
             />
           </OverlayTrigger>
           <Card.Body>
@@ -53,7 +57,11 @@ export class CardModulesAdmin extends Component {
           </Card.Body>
         </Card>
         <CardModulesAdminDelete/>
+        </Row>
+        
+       
       </>
+      
     );
   }
 }
