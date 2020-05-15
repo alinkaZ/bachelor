@@ -10,15 +10,19 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 import Form from "react-bootstrap/Form";
 import { authenticationService } from "../../utils/auth/authentication.service";
+import { apiService } from "../../utils/API/apiService";
+
+import { CardModulesAdminDelete } from "../../ModulPageAdmin/AdminHomePage/AdminPanelCards/CardModulesAdmin";
+
 
 export class CardModulesAdmin extends Component {
-  componentDidMount() {
-    console.log(authenticationService.currentUserValue);
-  }
+
   render() {
     return (
       <>
         <WordInput />
+       
+         
         <Card style={{ width: "16rem", height: "25rem" }}>
           <Card.Img
             variant="top"
@@ -48,6 +52,7 @@ export class CardModulesAdmin extends Component {
             </Button>
           </Card.Body>
         </Card>
+        <CardModulesAdminDelete/>
       </>
     );
   }

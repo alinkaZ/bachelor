@@ -7,6 +7,7 @@ import { authenticationService } from "../auth/authentication.service.js";
 export const apiService = {
   modules,
   getModuleByID,
+  createModule,
 };
 
 function modules() {
@@ -51,13 +52,15 @@ function getModuleByID(modulId) {
 }
 
 function createModule(modulData) {
+  console.log(modulData)
   const requestOptions = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${authenticationService.currentUserValue.token}`,
-      body: JSON.stringify(modulData)
+      
     },
+    body: JSON.stringify(modulData)
   };
 
   return fetch(`https://wixapi.azurewebsites.net/api/Modules`, requestOptions)

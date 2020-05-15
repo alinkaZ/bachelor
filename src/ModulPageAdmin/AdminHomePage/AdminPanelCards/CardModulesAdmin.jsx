@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { InfoMainPage } from "./InfoMainPage";
-import { NewCard } from "./NewCard";
-import { cardData } from "../Data/CardData";
-import { apiService } from "../utils/API/apiService";
-import "../Homepage/CardModules.css";
+
+import { CardAdmin } from "./CardAdmin";
+
+import { apiService } from "../../../utils/API/apiService";
+import "./CardModules.css";
 import Col from "react-bootstrap/Col";
 
-export class CardModules extends Component {
+export class CardModulesAdminDelete extends Component {
   constructor() {
     super();
     this.state = {
@@ -29,11 +29,11 @@ export class CardModules extends Component {
   render() {
     return (
       <>
-        <InfoMainPage />
+      
         <div className="cards">
           {this.state.cardData.map((x, y) => {
             
-            return <NewCard cardData={x} />;
+            return <CardAdmin cardData={x} />;
          
           })}
         </div>

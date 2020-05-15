@@ -30,17 +30,6 @@ export class ModulForm extends Component {
     apiService
       .getModuleByID(modulId)
       .then((data) => this.setState({ ModulData: data }));
-
-    /*promise
-      .then((value) => {
-        return value.json();
-      })
-      .then((value) => {
-        console.log(value);
-
-        this.setState({ ModulData: value });
-      });*/
-
     console.log(this.props);
   }
 
@@ -59,9 +48,10 @@ export class ModulForm extends Component {
         </Row>
         <Row>
           <Col xs={12} md={8}>
-            <InfoModul />
+         <p> {this.state.ModulData.description}</p>
             <h4>Course topics</h4>
-            <Schedule id="schedule" dataSchedule={ModulData.topics} /> {/*<this.state add when it will be on the API*/} 
+            <Schedule id="schedule" dataSchedule={ModulData.topics} />{" "}
+            {/*<this.state add when it will be on the API*/}
           </Col>
           <Col xs={12} md={4}>
             <Container>
@@ -71,7 +61,7 @@ export class ModulForm extends Component {
                 </Button>
               </Row>
               <Row>
-                <Summary dataSummary={ModulData} />
+                <Summary dataSummary={this.state.ModulData} />
               </Row>
               <Row>
                 <Instructor dataInstructors={ModulData.lectors} />
