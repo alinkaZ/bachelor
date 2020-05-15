@@ -3,45 +3,102 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Button from "react-bootstrap/Button";
-import { WordInput } from "../WordInput";
+import { WordInput } from "../CommonAdmin/WordInput";
 import { SummaryAdmin } from "./SummaryAdmin";
 import { InstructorAdmin } from "./InstructorAdmin";
 import { ScheduleAdmin } from "./ScheduleAdmin";
 import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
+import FormControl from "react-bootstrap/FormControl";
+import InputGroup from "react-bootstrap/InputGroup";
+import { apiService } from "../../utils/API/apiService";
 //import Form from 'react-bootstrap/Form';
 
 export class AdminModulMainPage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      moduleID: 0,
+      teacherID: 5,
+      adminID: 5,
+      institution: "string",
+      description: "string",
+      language: "string",
+      title: "string",
+      picture: "string",
+      price: 0,
+      duration: 0,
+    };
+  }
+
+  changeState = (event) => {
+    let s = {};
+    let field = event.target.id;
+    s[field] = event.target.value;
+    this.setState(s);
+  };
+  saveModul = (event) => {
+    apiService.createModule(this.state).then((x) => {
+      console.log(x);
+    });
+  };
+  updateState = (data) => {
+    this.setState(data);
+    console.log(data);
+  };
+
   render() {
     return (
       <Container>
         <Row>
           <Col xs={12} md={8}>
-            <label htmlFor="basic-url">
-              Here You can add Name of your course
-            </label>
-            <WordInput rows="2" />
-            <br />
+            <InputGroup>
+              <InputGroup.Prepend>
+                <InputGroup.Text>Add Name of your course</InputGroup.Text>
+              </InputGroup.Prepend>
+              <FormControl
+                as="textarea"
+                aria-label="With textarea"
+                value={this.state.title}
+                onChange={this.changeState}
+                id="title"
+                rows="2"
+              />
+            </InputGroup>
           </Col>
         </Row>
         <Row>
           <Col xs={12} md={8}>
+            <br />
             <label htmlFor="basic-url">Describe briefly your course </label>
-            <WordInput rows="14" />
+            {/*<WordInput rows="14" />*/}
+            <InputGroup>
+              <FormControl
+                as="textarea"
+                aria-label="With textarea"
+                value={this.state.description}
+                onChange={this.changeState}
+                id="description"
+                rows="14"
+              />
+            </InputGroup>
           </Col>
           <Col xs={6} md={4}>
             <Container>
               <Row>
-                <Button type="button" href="/adminText">
+                <Button type="button" onClick={this.saveModul}>
+                  Save
+                </Button>
+                <Button type="button" href="/textAdmin">
                   Add a content
                 </Button>
               </Row>
               <Row>
                 <br />
-                <SummaryAdmin />
+                <SummaryAdmin value={this.state} onChange={this.updateState} />
               </Row>
               <Row>
-                <InstructorAdmin />
+                <InstructorAdmin data={this.state.value} />
               </Row>
             </Container>
           </Col>
@@ -52,7 +109,11 @@ export class AdminModulMainPage extends Component {
               Download schedule
             </Button>
             <label htmlFor="basic-url">Describe schedule of the course </label>
-            <ScheduleAdmin />
+          </Col>
+        </Row>
+        <Row>
+          <Col xs={8} xm={12}>
+            <ScheduleAdmin data={this.saveModul} />
           </Col>
         </Row>
         <Row>
@@ -106,14 +167,6 @@ export class AdminModulMainPage extends Component {
               </span>
             </OverlayTrigger>
           </Col>
-          {/*<Form>
-                    <div className="mb-3">
-                        <Form.File id="formcheck-api-regular">
-                            <Form.File.Label> Here You can download schedule to the course</Form.File.Label>
-                            <Form.File.Input />
-                        </Form.File>
-                    </div>
-                </Form>*/}
         </Row>
       </Container>
     );

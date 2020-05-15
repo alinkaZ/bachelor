@@ -7,10 +7,10 @@ import Nav from 'react-bootstrap/Nav';
 export function Footer(){
     return(
         <div className='footer'>
-        
+
         <Navbar id="footer">
-          
-          <Nav className="mr-auto footer" >
+
+          <Nav className="mr-auto" >
             <Nav.Link href="#home">About us</Nav.Link>
             <Nav.Link href="#features">Contacts</Nav.Link>
             <Nav.Link href="#pricing">Something</Nav.Link>
@@ -18,11 +18,11 @@ export function Footer(){
           </Nav>
         </Navbar>
 
-        <div class="personalInfo">
+        <div className="personalInfo">
             <p>Website made with ♡</p>
             <p>Copyright © 2020 All Rights Reserved </p>
         </div>
-       
-        </div>      
+
+        </div>
     );
 }

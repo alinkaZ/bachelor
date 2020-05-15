@@ -8,6 +8,7 @@
 .inctructorCard{
     display:flex;
     justify-content:space-between;
+    width: 220px;
 }
 .instructor img{
     height: 80px;
