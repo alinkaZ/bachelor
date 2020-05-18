@@ -40,7 +40,7 @@ export class NewCard extends Component {
               };*/}
                 <Card.Img
                 variant="top"
-                src= {item.picture}/>
+                src= {item.picture} onError={(e)=>{e.target.onerror = null; e.target.src="https://storage.googleapis.com/snl-no-media/media/144223/standard_sosialdemokrati.jpg"}}/>
          <Card.Body>
                 <div class="container">
                   <div class="row">
@@ -55,7 +55,7 @@ export class NewCard extends Component {
 
                 <Card.Text>{item.title}</Card.Text>
                 <div className="container-button">
-                  <Button variant="primary btn-lg" href={`${this.url}/${item.moduleID}`}>
+                  <Button variant="primary btn-lg" href={`${this.url}/modules/${item.moduleID}`}>
                     Learn more
                   </Button>
                 </div>

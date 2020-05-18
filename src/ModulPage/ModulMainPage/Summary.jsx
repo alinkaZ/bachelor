@@ -22,7 +22,7 @@ export class Summary extends Component {
           </tr>
           <tr>
             <td>Price</td>
-            <td>{this.props.dataSummary.price}</td>
+            <td>{this.props.dataSummary.price==0? "free":this.props.dataSummary.price}</td>
           </tr>
           <tr>
             <td>Language</td>

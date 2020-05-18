@@ -5,20 +5,15 @@ import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Route, Switch } from "react-router";
 import { Layout } from "./Layout/Layout";
-import { InfoModul } from "./ModulPage/ModulMainPage/InfoModul";
 import { CardModules } from "./Homepage/CardModules";
 import { ModulForm } from "./ModulPage/ModulMainPage/ModulForm";
 import { AboutPage } from "./AboutPage/AboutPage";
 import { LoginPage } from "./LoginPage/LoginPage";
-
 import { Finish } from "./ModulPage/Finish/Finish";
 import { CardModulesAdmin } from "./ModulPageAdmin/AdminHomePage/AdminHomePage";
 import { AdminModulMainPage } from "./ModulPageAdmin/AdminModulMainPage/AdminModulMainPage";
-import { AdminModulDetailPageText } from "./ModulPageAdmin/AdminModulDetailPageText/AdminModulDetailPageText";
-import { AdminModulDetailPageVideo } from "./ModulPageAdmin/AdminModulDetailPageVideo/AdminModulDetailPageVideo";
-import { lessonsData } from "./Data/LessonsData";
 import { ModulDetailLesson } from "./ModulPage/ModulDetailLesson/ModulDetailLesson";
-import { AdminModulDetailPageQuiz } from "../src/ModulPageAdmin/AdminModulQuizPage/AdminModulQuizPage";
+import { AdminModulDetailLesson } from "./ModulPageAdmin/AdminHomePage/AdminLesson";
 
 export default class App extends Component {
   render() {
@@ -41,13 +36,28 @@ export default class App extends Component {
           <Route exact path={"/modules/:modulId/finish"}>
             <Finish />
           </Route>
-
           <Route path="/admin" component={CardModulesAdmin} />
           <Route path="/create" component={AdminModulMainPage} />
-          <Route exact path="/modules/:modulId/edit" component={AdminModulMainPage}/>
-          <Route path="/textAdmin" component={AdminModulDetailPageText} />
+          <Route
+            exact
+            path="/modules/:modulId/edit"
+            component={AdminModulMainPage}
+          />
+          <Route
+            exact
+            path="/modules/:modulId/edit/lessons/create"
+            component={AdminModulDetailLesson}
+          />
+
+          <Route
+            exact
+            path="/modules/:modulId/edit/lessons/:lessonId/edit"
+            component={AdminModulDetailLesson}
+          />
+
+          {/*<Route path="/textAdmin" component={AdminModulDetailPageText} />
           <Route path="/videoAdmin" component={AdminModulDetailPageVideo} />
-          <Route path="/quizAdmin" component={AdminModulDetailPageQuiz} />
+          <Route path="/quizAdmin" component={AdminModulDetailPageQuiz} />*/}
         </Switch>
       </Layout>
     );

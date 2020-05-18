@@ -12,19 +12,8 @@ import { SaveDelete } from "../CommonAdmin/SaveDelete";
 export class AdminModulDetailPageText extends Component {
   render() {
     return (
-      <Container>
-        <Row>
-          <Col xs={12} md={12}>
-            <Breadcrumbs />
-            <ButtonGroupAdmin />
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12} md={3}></Col>
-          <Col xs={12} md={6}>
-            <PaginationRow />
-          </Col>
-        </Row>
+      <>
+       
         <Row>
           <WordInput rows="20" />
         </Row>
@@ -33,7 +22,7 @@ export class AdminModulDetailPageText extends Component {
           <SaveDelete />
           </Col>
         </Row>
-      </Container>
+      </>
     );
   }
 }

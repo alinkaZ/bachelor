@@ -15,11 +15,15 @@ export class SummaryAdmin extends Component {
     if (typeof s[field] == "number") s[field] = event.target.value * 1;
     else s[field] = event.target.value;
     this.setState(s);
-    if (this.props.onChange!=null){
+    if (this.props.onChange != null) {
       this.props.onChange(s);
     }
-   
   };
+
+  componentWillReceiveProps({ value }) {
+    //debugger;
+    this.setState(value);
+  }
 
   render() {
     return (

@@ -33,7 +33,7 @@ export class AdminModulMainPage extends Component {
     };
   }
   componentDidMount() {
-    debugger;
+    //debugger;
     console.log(this.props.match);
     let { modulId } = this.props.match.params;
     if (modulId != null) {
@@ -45,7 +45,7 @@ export class AdminModulMainPage extends Component {
   }
 
   changeState = (event) => {
-    let s = {};
+    let s = this.state.data;
     let field = event.target.id;
     s[field] = event.target.value;
     this.setState({ data: s });
@@ -111,18 +111,19 @@ export class AdminModulMainPage extends Component {
                 <Button type="button" onClick={this.saveModul}>
                   Save
                 </Button>
-                <Button type="button" href="/textAdmin">
+                <Button type="button" href={`/modules/${this.state.data.moduleID}/edit/lessons/create`}>
                   Add a content
                 </Button>
               </Row>
               <Row>
                 <br />
-                {(modulId == this.state.data.moduleID || modulId == null) && (
-                  <SummaryAdmin
+                {/*(modulId == this.state.data.moduleID || modulId == null) && (
+                  
+                )*/}
+                <SummaryAdmin
                     value={this.state.data}
                     onChange={this.updateState}
                   />
-                )}
               </Row>
               <Row>
                 <InstructorAdmin
