@@ -45,10 +45,10 @@ export class NewCard extends Component {
                 <div class="container">
                   <div class="row">
                     <div class="col">
-                      <p id="lector"> {item.lecturer} </p>
+                      <p id="lector"> {/*{item.lecturer}*/} Erika Gubrium</p>
                     </div>
                     <div class="col">
-                      <p id="time"> {item.duration} </p>
+                      <p id="time"> {/*{item.duration}*/} 60 </p>
                     </div>
                   </div>
                 </div>

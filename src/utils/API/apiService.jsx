@@ -10,8 +10,15 @@ export const apiService = {
   createModule,
   deleteModuleByID,
   updateModuleByID,
+  createLesson,
+  deleteLessonByID,
+  updateLessonByID,
+  lessons,
+  getLessonByID,
+
 };
 
+//#region =================================START MODUL REGION====================================
 function modules() {
   const requestOptions = {
     method: "GET",
@@ -54,15 +61,14 @@ function getModuleByID(modulId) {
 }
 
 function createModule(modulData) {
-  console.log(modulData)
+  console.log(modulData);
   const requestOptions = {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
       Authorization: `Bearer ${authenticationService.currentUserValue.token}`,
-      
     },
-    body: JSON.stringify(modulData)
+    body: JSON.stringify(modulData),
   };
 
   return fetch(`https://wixapi.azurewebsites.net/api/Modules`, requestOptions)
@@ -104,7 +110,7 @@ function updateModuleByID(modulId, data) {
       "Content-Type": "application/json",
       Authorization: `Bearer ${authenticationService.currentUserValue.token}`,
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify(data),
   };
 
   return fetch(
@@ -119,3 +125,112 @@ function updateModuleByID(modulId, data) {
       return data;
     });
 }
+//#endregion =================================END MODUL REGION====================================
+
+//#region =================================START LESSON REGION====================================
+function lessons(ModuleId) {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authenticationService.currentUserValue.token}`,
+    },
+  };
+
+  return fetch(`https://wixapi.azurewebsites.net/api/module/${ModuleId}/Lessons`, requestOptions)
+    .then(handleResponse)
+    .then((data) => {
+      // store user details and jwt token in local storage to keep user
+      // logged in between page refreshes
+      console.log(data);
+      return data;
+    });
+}
+
+function getLessonByID(ModuleId, LessonId) {
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authenticationService.currentUserValue.token}`,
+    },
+  };
+
+  return fetch(
+    `https://wixapi.azurewebsites.net/api/module/${ModuleId}/Lessons/${LessonId}`,
+    requestOptions
+  )
+    .then(handleResponse)
+    .then((data) => {
+      // store user details and jwt token in local storage to keep user
+      // logged in between page refreshes
+      console.log(data);
+      return data;
+    });
+}
+
+function createLesson(ModuleID, lessonData) {
+  console.log(lessonData);
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authenticationService.currentUserValue.token}`,
+    },
+    body: JSON.stringify(lessonData),
+  };
+
+  return fetch(`https://wixapi.azurewebsites.net/api/module/${ModuleID}/Lessons`, requestOptions)
+    .then(handleResponse)
+    .then((data) => {
+      console.log(data);
+      return data;
+    });
+}
+function deleteLessonByID(ModuleId, LessonId) {
+  const requestOptions = {
+    method: "DELETE",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authenticationService.currentUserValue.token}`,
+    },
+  };
+
+  return fetch(
+    `https://wixapi.azurewebsites.net/api/module/${ModuleId}/Lessons/${LessonId}`,
+    requestOptions
+  )
+    .then(handleResponse)
+    .then((data) => {
+      // store user details and jwt token in local storage to keep user
+      // logged in between page refreshes
+      console.log(data);
+      return data;
+    });
+}
+
+function updateLessonByID(lessonId, data) {
+  const requestOptions = {
+    method: "PUT",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authenticationService.currentUserValue.token}`,
+    },
+    body: JSON.stringify(data),
+  };
+
+  return fetch(
+    `https://wixapi.azurewebsites.net/api/Lessons/${lessonId}`,
+    requestOptions
+  )
+    .then(handleResponse)
+    .then((data) => {
+      // store user details and jwt token in local storage to keep user
+      // logged in between page refreshes
+      console.log(data);
+      return data;
+    });
+}
+
+
+//#endregion =================================END LESSON REGION====================================

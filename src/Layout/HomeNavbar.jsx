@@ -10,13 +10,15 @@ const controlPage = () => {
   if (authenticationService.currentUserValue.token) {
     return (
       <>
-        <NavDropdown title={authenticationService.currentUserValue.username} id="nav-dropdown" eventKey="3">
-         <NavDropdown.Item eventKey="3.1" href="/admin">Admin</NavDropdown.Item>
-          {/*<NavDropdown.Item eventKey="3.2">Another action</NavDropdown.Item>
-          <NavDropdown.Item eventKey="3.3">
-            Something else here
-          </NavDropdown.Item>*/}
-    <NavDropdown.Divider />
+        <NavDropdown
+          title={authenticationService.currentUserValue.username}
+          id="nav-dropdown"
+          eventKey="3"
+        >
+          <NavDropdown.Item eventKey="3.1" href="/admin">
+            Admin
+          </NavDropdown.Item>
+          <NavDropdown.Divider />
           <NavDropdown.Item onClick={authenticationService.logout} href="/">
             Logout
           </NavDropdown.Item>

@@ -7,9 +7,23 @@ import { ButtonGroupAdmin } from "../CommonAdmin/ButtonGroupAdmin";
 import { WordInput } from "../CommonAdmin/WordInput";
 import { PaginationRow } from "../../ModulPage/Common/Pagination";
 import { SaveDelete } from "../CommonAdmin/SaveDelete";
+import { apiService } from "../../utils/API/apiService";
 
 
 export class AdminModulDetailPageText extends Component {
+  constructor(props) {
+    super(props);
+    let { modulId, lessonId } = this.props.info;
+    this.state=this.props.info;
+}
+save=()=>{
+  console.log("Save lesson");
+  apiService.createLesson(this.state);
+}
+delete=()=>{
+  console.log("Delete lesson");
+  apiService.deleteLesson(this.state);
+}
   render() {
     return (
       <>
@@ -19,7 +33,7 @@ export class AdminModulDetailPageText extends Component {
         </Row>
         <Row>
           <Col xs={12} md={11}>
-          <SaveDelete />
+          <SaveDelete onSave={this.save} onDelete={this.delete}/>
           </Col>
         </Row>
       </>

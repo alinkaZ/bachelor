@@ -54,10 +54,6 @@ export default class App extends Component {
             path="/modules/:modulId/edit/lessons/:lessonId/edit"
             component={AdminModulDetailLesson}
           />
-
-          {/*<Route path="/textAdmin" component={AdminModulDetailPageText} />
-          <Route path="/videoAdmin" component={AdminModulDetailPageVideo} />
-          <Route path="/quizAdmin" component={AdminModulDetailPageQuiz} />*/}
         </Switch>
       </Layout>
     );

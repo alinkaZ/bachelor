@@ -49,6 +49,7 @@ export class AdminModulDetailLesson extends Component {
             id: 0,
             type: "text",
             modulId: modulId,
+            lessonId: lessonId,
             title: "",
             details: {
               text: "",

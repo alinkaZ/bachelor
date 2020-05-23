@@ -12,7 +12,6 @@ import {
 } from "react-router-dom";
 
 export class CardAdmin extends Component {
-  
   url = "";
   constructor(props) {
     super(props);
@@ -20,10 +19,9 @@ export class CardAdmin extends Component {
     let { cardData } = this.props;
     //console.log(this.props, item);
     this.state = cardData;
-    console.log (props);
-    }
+    console.log(props);
+  }
 
-  
   deleteModul = (event) => {
     apiService.deleteModuleByID(this.state.moduleID).then((x) => {
       this.props.onDelete(x);
@@ -33,19 +31,26 @@ export class CardAdmin extends Component {
 
   render() {
     let item = this.state;
-return (
-
+    return (
       <>
         <Card style={{ width: "18rem" }}>
-          <Card.Img variant="top" src={item.picture} onError={(e)=>{e.target.onerror = null; e.target.src="https://storage.googleapis.com/snl-no-media/media/144223/standard_sosialdemokrati.jpg"}} />
+          <Card.Img
+            variant="top"
+            src={item.picture}
+            onError={(e) => {
+              e.target.onerror = null;
+              e.target.src =
+                "https://storage.googleapis.com/snl-no-media/media/144223/standard_sosialdemokrati.jpg";
+            }}
+          />
           <Card.Body>
             <div class="container">
               <div class="row">
                 <div class="col">
-                  <p id="lector"> {item.lecturer} </p>
+          <p id="lector"> {/*{item.lecturer}*/} Erika Gubrium </p>
                 </div>
                 <div class="col">
-                  <p id="time"> {item.duration} </p>
+                  <p id="time"> {/*{item.duration}*/} 60 </p>
                 </div>
               </div>
             </div>
