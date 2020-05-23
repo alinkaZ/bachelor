@@ -10,34 +10,52 @@ import {
   useRouteMatch,
 } from "react-router-dom";
 
-export function NewCard(props) {
-  let { path, url } = useRouteMatch();
-  let {cardData}=props;
-  let item = cardData;
-  console.log (props, item);
+export class NewCard extends Component {
+
+  url = "";
+  constructor(props) {
+    super(props);
+    //let { path, url } = useRouteMatch();
+    let { cardData } = this.props;
+    //console.log(this.props, item);
+    this.state = cardData;
+    console.log (props);
+    }
+
+    render() {
+      let item = this.state;
   return (
     <>
       <Card style={{ width: "18rem" }}>
         
-         
+         {/*if (item.picture==null){
+           <Card.Img
+           variant="top"
+           src= {item.picture}/>//take default picture
+        
+         }else{
               <Card.Img
                 variant="top"
-                src= {item.image}/>
-              <Card.Body>
+                src= {item.picture}/>
+              };*/}
+                <Card.Img
+                variant="top"
+                src= {item.picture} onError={(e)=>{e.target.onerror = null; e.target.src="https://storage.googleapis.com/snl-no-media/media/144223/standard_sosialdemokrati.jpg"}}/>
+         <Card.Body>
                 <div class="container">
                   <div class="row">
                     <div class="col">
-                      <p id="lector"> {item.lecturer} </p>
+                      <p id="lector"> {/*{item.lecturer}*/} Erika Gubrium</p>
                     </div>
                     <div class="col">
-                      <p id="time"> {item.timing} </p>
+                      <p id="time"> {/*{item.duration}*/} 60 </p>
                     </div>
                   </div>
                 </div>
 
-                <Card.Text>{item.name}</Card.Text>
+                <Card.Text>{item.title}</Card.Text>
                 <div className="container-button">
-                  <Button variant="primary btn-lg" href={`${url}/${item.moduleID}`}>
+                  <Button variant="primary btn-lg" href={`${this.url}/modules/${item.moduleID}`}>
                     Learn more
                   </Button>
                 </div>
@@ -49,4 +67,4 @@ export function NewCard(props) {
       );
     
   
-}
+}}

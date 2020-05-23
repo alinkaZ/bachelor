@@ -7,6 +7,22 @@ import OverlayTrigger from "react-bootstrap/OverlayTrigger";
 import Tooltip from "react-bootstrap/Tooltip";
 
 export class SaveDelete extends Component {
+  constructor(props) {
+    super(props);
+  }
+  save = (event) => {
+    console.log(this.props);
+    if (this.props.onSave) {
+      this.props.onSave();
+    }
+  };
+  delete = (event) => {
+    console.log(this.props);
+    if (this.props.onDelete) {
+      this.props.onDelete();
+    }
+  };
+
   render() {
     return (
       <>
@@ -22,9 +38,7 @@ export class SaveDelete extends Component {
                 }
               >
                 <span className="d-inline-block">
-                  <Button disabled style={{ pointerEvents: "none" }}>
-                    Delete
-                  </Button>
+                  <Button onClick={this.delete}>Delete</Button>
                 </span>
               </OverlayTrigger>
             </Col>
@@ -37,9 +51,7 @@ export class SaveDelete extends Component {
                 }
               >
                 <span className="d-inline-block">
-                  <Button disabled style={{ pointerEvents: "none" }}>
-                    Save
-                  </Button>
+                  <Button onClick={this.save}>Save</Button>
                 </span>
               </OverlayTrigger>
             </Col>

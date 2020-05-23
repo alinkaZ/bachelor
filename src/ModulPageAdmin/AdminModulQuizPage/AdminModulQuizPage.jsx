@@ -39,19 +39,8 @@ export class AdminModulDetailPageQuiz extends Component {
 
   render() {
     return (
-      <Container>
-        <Row>
-          <Col xs={12} md={12}>
-            <Breadcrumbs />
-            <ButtonGroupAdmin />
-          </Col>
-        </Row>
-        <Row>
-          <Col xs={12} md={5}></Col>
-          <Col xs={12} md={1}>
-            <PaginationRow />
-          </Col>
-        </Row>
+      <>
+        
         <Row>
           {this.state.questions.map((item, index) => {
             return <Question key ={index} data={item} />;
@@ -66,7 +55,7 @@ export class AdminModulDetailPageQuiz extends Component {
             <SaveDelete />
           </Col>
         </Row>
-      </Container>
+      </>
     );
   }
 }

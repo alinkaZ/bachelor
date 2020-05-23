@@ -17,20 +17,8 @@ export class AdminModulDetailPageVideo extends Component {
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col xs={12} md={12}>
-            <Breadcrumbs />
-            <ButtonGroupAdmin />
-          </Col>
-        </Row>
-        <Row>
-          <Col></Col>
-          <Col xs={12} md={2}>
-            <PaginationRow />
-          </Col>
-          <Col></Col>
-        </Row>
+      <>
+        
         <Row>
           <Col></Col>
           <Col xs={12} md={6}>
@@ -53,7 +41,7 @@ export class AdminModulDetailPageVideo extends Component {
             <SaveDelete />
           </Col>
         </Row>
-      </Container>
+      </>
     );
   }
 }

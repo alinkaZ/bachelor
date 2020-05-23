@@ -15,8 +15,15 @@ export class SummaryAdmin extends Component {
     if (typeof s[field] == "number") s[field] = event.target.value * 1;
     else s[field] = event.target.value;
     this.setState(s);
-    this.props.onChange(s);
+    if (this.props.onChange != null) {
+      this.props.onChange(s);
+    }
   };
+
+  componentWillReceiveProps({ value }) {
+    //debugger;
+    this.setState(value);
+  }
 
   render() {
     return (
@@ -83,6 +90,19 @@ export class SummaryAdmin extends Component {
               value={this.state.language}
               onChange={this.changeState}
               id="language"
+            />
+          </Col>
+        </Form.Group>
+        <Form.Group as={Row}>
+          <Form.Label column sm="3">
+            Picture
+          </Form.Label>
+          <Col sm="9">
+            <Form.Control
+              placeholder="Picture to the ModulCard "
+              value={this.state.picture}
+              onChange={this.changeState}
+              id="picture"
             />
           </Col>
         </Form.Group>

@@ -3,13 +3,13 @@ import { BehaviorSubject } from 'rxjs';
 //import config from 'config';
 import { handleResponse } from '../handle-response.js';
 
-const currentUserSubject = new BehaviorSubject(JSON.parse(localStorage.getItem('currentUser')));
+const currentUserSubject = new BehaviorSubject(localStorage.getItem('currentUser')? JSON.parse(localStorage.getItem('currentUser')):{});
 
 export const authenticationService = {
     login,
     logout,
     currentUser: currentUserSubject.asObservable(),
-    get currentUserValue () { return currentUserSubject.value }
+    get currentUserValue () { return currentUserSubject? currentUserSubject.value:{} }
 };
 
 function login(username, password) {
@@ -34,6 +34,7 @@ function login(username, password) {
 }
 
 function logout() {
+    //console.log(logout)
     // remove user from local storage to log user out
     localStorage.removeItem('currentUser');
     currentUserSubject.next(null);

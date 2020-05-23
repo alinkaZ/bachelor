@@ -48,7 +48,7 @@ export class ModulForm extends Component {
         </Row>
         <Row>
           <Col xs={12} md={8}>
-         <p> {this.state.ModulData.description}</p>
+            <p> {this.state.ModulData.description}</p>
             <h4>Course topics</h4>
             <Schedule id="schedule" dataSchedule={ModulData.topics} />{" "}
             {/*<this.state add when it will be on the API*/}
