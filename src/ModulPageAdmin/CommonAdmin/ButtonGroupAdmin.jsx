@@ -10,10 +10,10 @@ export class ButtonGroupAdmin extends Component {
       onLessonTypeChange: this.props.onLessonTypeChange,
     };
   }
-  onButtonClick(event, type) {
-    console.log(event, type);
+  onButtonClick(data, event) {
+    console.log(data, event);
     if (this.props.onLessonTypeChange) {
-      this.props.onLessonTypeChange("quiz");
+      this.props.onLessonTypeChange(data.type);
     }
     /*this.state.onLessonTypeChange()*/
   };
@@ -21,13 +21,13 @@ export class ButtonGroupAdmin extends Component {
   render() {
     return (
       <ButtonGroup vertical>
-        <Button className="btn-admin" onClick={this.onButtonClick.bind(this, "text")}>
+        <Button className="btn-admin" onClick={this.onButtonClick.bind(this, {type:"text"})}>
           Text
         </Button>
-        <Button className="btn-admin" onClick={this.onButtonClick.bind(this,"video")}>
+        <Button className="btn-admin" onClick={this.onButtonClick.bind(this,{type:"video"})}>
           Video
         </Button>
-        <Button className="btn-admin" onClick={this.onButtonClick.bind(this,"quiz")}>
+        <Button className="btn-admin" onClick={this.onButtonClick.bind(this,{type:"quiz"})}>
           Quiz
         </Button>
       </ButtonGroup>

@@ -44,31 +44,29 @@ export class AdminModulDetailLesson extends Component {
   constructor(props) {
     super(props);
     let { modulId, lessonId } = this.props.match.params;
-    this.state={
-        
-            id: 0,
-            type: "text",
-            modulId: modulId,
-            lessonId: lessonId,
-            title: "",
-            details: {
-              text: "",
-            },
-    
+    this.state = {
+      id: 0,
+      type: "text",
+      modulId: modulId,
+      lessonId: lessonId,
+      title: "",
+      details: {
+        text: "",
+      },
+    };
   }
-}
-  onLessonTypeChange=(value)=>{
+  onLessonTypeChange = (value) => {
+    console.log(value)
     let lessonTmp = this.state;
     lessonTmp.type = value;
-    this.setState( lessonTmp);
-  }
+    this.setState(lessonTmp);
+  };
 
   render() {
-    
     let { modulId, lessonId } = this.props.match.params;
     lessonId = lessonId * 1;
     console.log(modulId, lessonId);
-  
+
     if (lessonsData.length < lessonId) {
       this.setState(lessonsData[lessonId - 1]);
     }
@@ -88,7 +86,13 @@ export class AdminModulDetailLesson extends Component {
           </Col>
           <Col></Col>
         </Row>
-        {AdminModulLessonContent(this.state)}
+        {
+          {
+            text: <AdminModulDetailPageText info={this.state} />,
+            video: <AdminModulDetailPageVideo info={this.state} />,
+            quiz: <AdminModulDetailPageQuiz info={this.state} />,
+          }[this.state.type]
+        }
         <Row>
           <ButtonsPrevNext />
         </Row>
