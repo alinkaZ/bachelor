@@ -30,8 +30,8 @@ export default class App extends Component {
             path={"/modules/:modulId"}
             render={(props) => <ModulForm {...props} />}
           ></Route>
-          <Route exact path="/modules/:modulId/lessons/:lessonId">
-            <ModulDetailLesson />
+          <Route exact path="/modules/:modulId/lessons/:lessonId" component={ModulDetailLesson}>
+            
           </Route>
           <Route exact path={"/modules/:modulId/finish"}>
             <Finish />

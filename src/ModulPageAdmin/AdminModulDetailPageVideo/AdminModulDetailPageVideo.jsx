@@ -9,8 +9,40 @@ import { PaginationRow } from "../../ModulPage/Common/Pagination";
 import { SaveDelete } from "../CommonAdmin/SaveDelete";
 import "../AdminModulDetailPageVideo/AdminVideo.css";
 import bsCustomFileInput from "bs-custom-file-input";
+import FormControl from "react-bootstrap/FormControl";
+import InputGroup from "react-bootstrap/InputGroup";
+import { apiService } from "../../utils/API/apiService";
 
 export class AdminModulDetailPageVideo extends Component {
+  constructor(props) {
+    super(props);
+    let { modulId, lessonId } = this.props.info;
+    this.state = {
+      type: this.props.info.type,
+      name: "",
+      details: "",
+      modulId: modulId,
+      lessonId: lessonId,
+    };
+  }
+  save = () => {
+    console.log("Save lesson", this.state);
+    apiService.createLesson(this.state.modulId, {
+      type: this.state.type,
+      name: this.state.name,
+      details: this.state.details,
+    });
+  };
+  delete = () => {
+    console.log("Delete lesson");
+    apiService.deleteLesson(this.state);
+  };
+  changeState = (event) => {
+    let s = this.state;
+    let field = event.target.id;
+    s[field] = event.target.value;
+    this.setState(s);
+  };
   componentDidMount() {
     bsCustomFileInput.init();
   }
@@ -18,7 +50,19 @@ export class AdminModulDetailPageVideo extends Component {
   render() {
     return (
       <>
-        
+        <Row>
+          <InputGroup>
+            <FormControl
+              as="textarea"
+              aria-label="With textarea"
+              value={this.state.name}
+              onChange={this.changeState}
+              id="name"
+              rows="2"
+            />
+          </InputGroup>
+        </Row>
+        <br />
         <Row>
           <Col></Col>
           <Col xs={12} md={6}>
@@ -38,7 +82,7 @@ export class AdminModulDetailPageVideo extends Component {
         <Row></Row>
         <Row>
           <Col xs={12} md={12}>
-            <SaveDelete />
+            <SaveDelete onSave={this.save} onDelete={this.delete} />
           </Col>
         </Row>
       </>

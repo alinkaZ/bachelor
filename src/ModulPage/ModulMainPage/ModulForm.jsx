@@ -21,9 +21,15 @@ import {
 } from "react-router-dom";
 
 export class ModulForm extends Component {
-  constructor() {
-    super();
-    this.state = { data: [], ModulData: {} };
+  url = "";
+  constructor(params) {
+    super(params);
+    this.state = {
+      data: [],
+      ModulData: {},
+      modulId: this.props.match.params.moduleID,
+      lessonId: this.props.match.params.lessonId,
+    };
   }
   componentDidMount() {
     let { modulId } = this.props.match.params;
@@ -41,7 +47,7 @@ export class ModulForm extends Component {
       <Container>
         {/* Stack the columns on mobile by making one full-width and the other half-width */}
         <Row>
-          <Col xs={12} md={12}>
+          <Col xs={12} md={8}>
             <Breadcrumbs />
             <h1>{this.state.ModulData.title}</h1>
           </Col>
@@ -56,7 +62,10 @@ export class ModulForm extends Component {
           <Col xs={12} md={4}>
             <Container>
               <Row>
-                <Button type="button" href={`${url}/lessons/001`}>
+                <Button
+                  type="button"
+                  href={`${this.url}/modules/${this.modulId}/lessons/${this.lessonId}`}
+                >
                   Start the course
                 </Button>
               </Row>
