@@ -48,7 +48,7 @@ export class NewCard extends Component {
                       <p id="lector"> {/*{item.lecturer}*/} Erika Gubrium</p>
                     </div>
                     <div class="col">
-                      <p id="time"> {/*{item.duration}*/} 60 </p>
+                      <p id="time"> {item.duration} </p>
                     </div>
                   </div>
                 </div>

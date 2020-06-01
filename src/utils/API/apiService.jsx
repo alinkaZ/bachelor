@@ -15,6 +15,7 @@ export const apiService = {
   updateLessonByID,
   lessons,
   getLessonByID,
+  createUser,
 
 };
 
@@ -234,3 +235,28 @@ function updateLessonByID(lessonId, data) {
 
 
 //#endregion =================================END LESSON REGION====================================
+//#region =================================START USER REGION====================================
+function createUser(userData) {
+  console.log(userData);
+  const requestOptions = {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `Bearer ${authenticationService.currentUserValue.token}`,
+    },
+    body: JSON.stringify(userData),
+  };
+
+  return fetch(`https://wixapi.azurewebsites.net/api/Persons`, requestOptions)
+    .then(handleResponse)
+    .then((data) => {
+      // store user details and jwt token in local storage to keep user
+      // logged in between page refreshes
+      console.log(data);
+      return data;
+    });
+}
+//#endregion =================================END USER REGION====================================
+
+
+

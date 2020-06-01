@@ -51,7 +51,7 @@ export class AdminModulMainPage extends Component {
     this.setState({ data: s });
   };
   saveModul = (event) => {
-    if (this.state.data.modulID == 0) {
+    if (this.state.data.moduleID == 0) {
       apiService.createModule(this.state.data).then((x) => {
         console.log(x);
       });

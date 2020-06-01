@@ -75,6 +75,13 @@ export class AdminModulDetailPageVideo extends Component {
                   custom
                 />
               </Form>
+              <br />
+              <Form.Control
+                placeholder="Link to the video "
+                value={this.state.details}
+                onChange={this.changeState}
+                id="details"
+              />
             </div>
           </Col>
           <Col></Col>

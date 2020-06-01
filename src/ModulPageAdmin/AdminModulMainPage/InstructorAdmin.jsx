@@ -40,6 +40,9 @@ export class InstructorAdmin extends Component {
             <Form.Label>Select lecturer of the course</Form.Label>
             <Form.Control as="select">
               <option value="5">Erika Gubrium</option>
+              <option value="6">Aadne Aasland</option>
+              <option value="7">Professor Linda Cook</option>
+              
             </Form.Control>
           </Form.Group>
         </Row>
