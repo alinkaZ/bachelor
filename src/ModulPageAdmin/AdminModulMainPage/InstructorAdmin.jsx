@@ -39,9 +39,9 @@ export class InstructorAdmin extends Component {
           <Form.Group controlId="exampleForm.ControlSelect1" onChange={this.changeSelected}>
             <Form.Label>Select lecturer of the course</Form.Label>
             <Form.Control as="select">
-              <option value="5">Erika Gubrium</option>
-              <option value="6">Aadne Aasland</option>
-              <option value="7">Professor Linda Cook</option>
+              <option value="erika">Erika Gubrium</option>
+              <option value="aadne">Aadne Aasland</option>
+              <option value="linda"> Linda Cook</option>
               
             </Form.Control>
           </Form.Group>

@@ -26,15 +26,16 @@ function ChangeLesson({ status }) {
 
 function ModulLessonContent(param) {
   console.log("this.state.currentLesson", param.type);
+  console.log("LessonID", param.lessonID);
   switch (param.type) { //param.type.trim() does not works
-    case "text           ":
+    case ("text" || "text           "):
       return <ModulDetailPageText info={param} />;
-    case "video          ":
+    case ("video" ||  "video          "):
       return <ModulDetailPageVideo info={param} />;
-    case "quiz           ":
+    case ("quiz" ||  "quiz           "):
       return <ModulDetailPageQuiz info={param} />;
     default:
-      return "Modul not found";
+      return <Finish />;
   }
 }
 
@@ -42,48 +43,47 @@ export class ModulDetailLesson extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      modulId: this.props.match.params.modulId,
-      lessonId: this.props.match.params.lessonId,
-      data: [],
+      modulId: "",
+      lessonId: "",
+      lessons: [],
       pageIndex: 0,
       pageCount: 0,
       currentLesson: {},
     };
   }
   toPrevious = () => {
-    if (this.state.pageIndex + 1 < this.state.pageCount) {
-      apiService.updateLessonByID(this.state.modulId, {
-        type: this.state.type,
-        name: this.state.name,
-        details: this.state.details,
-      });
-      this.state.pageindex = this.state.pageIndex + 1;
-    } else {
-      this.state.currentLesson=<Finish />;
+    if (this.state.pageIndex > 0) {
+      this.setState({
+        pageIndex: this.state.pageIndex - 1,
+        currentLesson: this.state.lessons[this.state.pageIndex - 1]
+      })
     }
   };
 
   toNext = () => {
-    if (this.state.pageIndex - 1 > this.state.pageCount) {
-      apiService.updateLessonByID(this.state.modulId, {
-        type: this.state.type,
-        name: this.state.name,
-        details: this.state.details,
-      });
-      this.state.pageindex = this.state.pageIndex - 1;
+    if (this.state.pageIndex < this.state.lessons.length - 1) {
+      this.setState({
+        pageIndex: this.state.pageIndex + 1,
+        currentLesson: this.state.lessons[this.state.pageIndex + 1]
+      })
+    } else {
+      this.setState({
+        pageIndex: this.state.lessons.length,
+        currentLesson: {}
+      })
     }
   };
+
   componentDidMount() {
-    apiService.lessons(this.state.modulId).then((x) => {
-      console.log(x);
-      let tempData = this.state;
-      this.state.data = x;
-      this.state.pageCount = x.length;
-      if (x.length > 0) {
-        let lesson = this.state.data[this.state.pageIndex];
-        this.state.currentLesson = lesson;
-      }
-      this.setState(tempData);
+    this.setState({
+      modulId: this.props.match.params.modulId,
+      lessonId: this.props.match.params.lessonId
+    })
+    apiService.lessons(this.props.match.params.modulId).then((data) => {
+      this.setState({
+        lessons: data,
+        currentLesson: data[0]
+      })
     });
   }
 

@@ -12,7 +12,8 @@ import Tooltip from "react-bootstrap/Tooltip";
 import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
 import { apiService } from "../../utils/API/apiService";
-//import Form from 'react-bootstrap/Form';
+import { Editor, EditorState, RichUtils } from "draft-js";
+import "draft-js/dist/Draft.css";
 
 export class AdminModulMainPage extends Component {
   constructor(props) {
@@ -23,7 +24,7 @@ export class AdminModulMainPage extends Component {
         teacherID: 5,
         adminID: 5,
         institution: "",
-        description: "",
+        description: EditorState.createEmpty(),
         language: "",
         title: "",
         picture: "",
@@ -67,6 +68,9 @@ export class AdminModulMainPage extends Component {
     this.setState({ data: data });
     console.log(data);
   };
+  _onBoldClick() {
+    this.onChange(RichUtils.toggleInlineStyle(this.state.editorState, "BOLD"));
+  }
 
   render() {
     let { modulId } = this.props.match.params;
@@ -78,6 +82,12 @@ export class AdminModulMainPage extends Component {
               <InputGroup.Prepend>
                 <InputGroup.Text>Add Name of your course</InputGroup.Text>
               </InputGroup.Prepend>
+              {/*<button onClick={this._onBoldClick.bind(this)}>Bold</button>
+              <Editor
+                editorState={this.state.editorState}
+                handleKeyCommand={this.handleKeyCommand}
+                onChange={this.onChange}
+              />*/}
               <FormControl
                 as="textarea"
                 aria-label="With textarea"
@@ -111,7 +121,11 @@ export class AdminModulMainPage extends Component {
                 <Button type="button" onClick={this.saveModul}>
                   Save
                 </Button>
-                <Button type="button" href={`/modules/${this.state.data.moduleID}/edit/lessons/create`}>
+                
+                <Button
+                  type="button"
+                  href={`/modules/${this.state.data.moduleID}/edit/lessons/create`}
+                >
                   Add a content
                 </Button>
               </Row>
@@ -121,9 +135,9 @@ export class AdminModulMainPage extends Component {
                   
                 )*/}
                 <SummaryAdmin
-                    value={this.state.data}
-                    onChange={this.updateState}
-                  />
+                  value={this.state.data}
+                  onChange={this.updateState}
+                />
               </Row>
               <Row>
                 <InstructorAdmin

@@ -27,21 +27,26 @@ export class ModulForm extends Component {
     this.state = {
       data: [],
       ModulData: {},
-      modulId: this.props.match.params.moduleID,
-      lessonId: this.props.match.params.lessonId,
+      modulId: "",
+      lessons: [],
     };
   }
   componentDidMount() {
     let { modulId } = this.props.match.params;
+    this.setState({ modulId });
     apiService
       .getModuleByID(modulId)
       .then((data) => this.setState({ ModulData: data }));
-    console.log(this.props);
+    apiService
+      .lessons(modulId)
+      .then((data) => this.setState({ lessons: data }));
   }
 
   render() {
     console.log("modulForm", this);
-    let url = window.location.href;
+    const filteredLessons = this.state.lessons.filter(lesson => lesson.moduleID == this.state.modulId );
+    console.log("filteredLessons ", filteredLessons );
+    
 
     return (
       <Container>
@@ -62,11 +67,12 @@ export class ModulForm extends Component {
           <Col xs={12} md={4}>
             <Container>
               <Row>
-                <Button
-                  type="button"
-                  href={`${this.url}/modules/${this.modulId}/lessons/${this.lessonId}`}
-                >
-                  Start the course
+              <Button>
+                  <Link
+                    to={`${this.state.modulId}/lessons/${this.state.lessons[0] && filteredLessons[0].lessonID}`}
+                  >
+                    Start the course
+                  </Link>
                 </Button>
               </Row>
               <Row>

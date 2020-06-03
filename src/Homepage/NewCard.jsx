@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { Link } from 'react-router-dom';
 import "./NewCard.css";
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
@@ -12,18 +13,10 @@ import {
 
 export class NewCard extends Component {
 
-  url = "";
-  constructor(props) {
-    super(props);
-    //let { path, url } = useRouteMatch();
-    let { cardData } = this.props;
-    //console.log(this.props, item);
-    this.state = cardData;
-    console.log (props);
-    }
+  
 
     render() {
-      let item = this.state;
+      let { cardData } = this.props;
   return (
     <>
       <Card style={{ width: "18rem" }}>
@@ -40,23 +33,23 @@ export class NewCard extends Component {
               };*/}
                 <Card.Img
                 variant="top"
-                src= {item.picture} onError={(e)=>{e.target.onerror = null; e.target.src="https://storage.googleapis.com/snl-no-media/media/144223/standard_sosialdemokrati.jpg"}}/>
+                src= {cardData.picture} onError={(e)=>{e.target.onerror = null; e.target.src="https://storage.googleapis.com/snl-no-media/media/144223/standard_sosialdemokrati.jpg"}}/>
          <Card.Body>
                 <div class="container">
                   <div class="row">
                     <div class="col">
-                      <p id="lector"> {/*{item.lecturer}*/} Erika Gubrium</p>
+                      <p id="lector"> {/*{cardData.lecturer}*/} Erika Gubrium</p>
                     </div>
                     <div class="col">
-                      <p id="time"> {item.duration} </p>
+                      <p id="time"> {cardData.duration} </p>
                     </div>
                   </div>
                 </div>
 
-                <Card.Text>{item.title}</Card.Text>
+                <Card.Text>{cardData.title}</Card.Text>
                 <div className="container-button">
-                  <Button variant="primary btn-lg" href={`${this.url}/modules/${item.moduleID}`}>
-                    Learn more
+                  <Button variant="primary btn-lg"> <Link to={`/modules/${cardData.moduleID}`}>
+                    Learn more </Link>
                   </Button>
                 </div>
               </Card.Body>

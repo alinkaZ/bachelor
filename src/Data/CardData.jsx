@@ -1,21 +1,18 @@
 export const cardData = 
 [
-    {image: "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Abstract_Art_2002.jpg/330px-Abstract_Art_2002.jpg",
+    {image: "https://articles.familieklubben.no/sites/default/files/styles/wysiwyg_fullwidth/public/HiOAarmscrossed_edited.jpg?itok=YzYHeDJE",
 lecturer: "Erika Gubrium",
-timing:"60 min",
-name: "It will be name of the module"},
+title:"Professor",
+institution: "OsloMet"},
 
-{image: "https://i.etsystatic.com/17072610/r/il/4dc22f/1427703510/il_570xN.1427703510_kqct.jpg",
-lecturer: "Aadne Gorstad",
-timing: "160 min",
-name: "It will be next name of the module"},
+{image: "https://vitenogsnakkis.oslomet.no/wp-content/uploads/2016/09/aadnea.jpeg",
+lecturer: "Aadne Aasland",
+title: "Senior researcher",
+institution: "OsloMet"},
 
-{image: "https://cdn.pixabay.com/photo/2015/12/20/00/32/art-1100519_1280.jpg",
-lecturer: "Alina Zielinska",
-timing: "120 min",
-name: "It will be next next name of the module"},
+{image: "https://vivo.brown.edu/profile-images/863/8/lcookphd_photo_.jpg",
+lecturer: "Linda Cook",
+title: "Professor",
+institution: "Brown University"},
 
-{image: "https://i1.wp.com/loveyogastudios.com/wp-content/uploads/2019/12/dandelion.jpg?fit=480%2C600&ssl=1",
-lecturer: "Alina Zielinska",
-timing:"120 min",
-name: "It will be next next name of the module"} ]
+]

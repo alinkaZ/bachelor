@@ -8,13 +8,13 @@ import { apiService } from "../../utils/API/apiService";
 
 function newUser (data){
   apiService.createUser(data).then((x) => {
-    console.log(x);
+    console.log("registration data", x);
   });
 }
 
 
 const RegisterModalForm = (props) => {
-  //const [name, surName, email, phone, password];
+  //const [name, surName, email, username, password];
   return (
     <Modal
       {...props}
@@ -31,8 +31,9 @@ const RegisterModalForm = (props) => {
             name: "",
             surname: "",
             email: "",
-            phone: "",
+            username: "",
             password: "",
+            
           }}
           validationSchema={Yup.object().shape({
             name: Yup.string().required("Name is required"),
@@ -90,17 +91,17 @@ const RegisterModalForm = (props) => {
                 />
               </div>
               <div className="form-group">
-                <label htmlFor="phone">Phone</label>
+                <label htmlFor="username">Username</label>
                 <Field
-                  name="phone"
+                  name="username"
                   type="text"
                   className={
                     "form-control" +
-                    (errors.phone && touched.phone ? " is-invalid" : "")
+                    (errors.username && touched.username ? " is-invalid" : "")
                   }
                 />
                 <ErrorMessage
-                  name="phone"
+                  name="username"
                   component="div"
                   className="invalid-feedback"
                 />

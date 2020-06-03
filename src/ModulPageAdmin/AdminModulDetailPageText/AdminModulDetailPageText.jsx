@@ -10,6 +10,8 @@ import { SaveDelete } from "../CommonAdmin/SaveDelete";
 import { apiService } from "../../utils/API/apiService";
 import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
+import {Editor, EditorState} from 'draft-js';
+import 'draft-js/dist/Draft.css';
 
 export class AdminModulDetailPageText extends Component {
   constructor(props) {
@@ -18,7 +20,7 @@ export class AdminModulDetailPageText extends Component {
     this.state = {
       type: this.props.info.type,
       name: "",
-      details: "",
+      details: EditorState.createEmpty(),
       modulId: modulId,
       lessonId: lessonId,
     };
