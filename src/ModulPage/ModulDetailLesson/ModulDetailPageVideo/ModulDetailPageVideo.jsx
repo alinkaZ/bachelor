@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-
+import ReactPlayer from "react-player";
 import { Row } from "reactstrap";
 import Col from "react-bootstrap/Col";
 
@@ -7,20 +7,11 @@ export class ModulDetailPageVideo extends Component {
   render() {
     return (
       <>
-      <Row>
-        <Col ></Col>
-        <Col xs={12} md={6}>
+        <Row className="justify-content-md-center">
           
-            <video width="750" height="500" controls>
-              <source
-                alt="here Should Be a Video"
-                src={this.props.info.details}
-                type="video/mp4"
-              />
-            </video>
+            <ReactPlayer url={this.props.info.details} />
+            <br />
           
-        </Col>
-        <Col></Col>
         </Row>
       </>
     );

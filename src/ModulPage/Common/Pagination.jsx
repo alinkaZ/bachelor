@@ -4,33 +4,42 @@ import "./Pagination.css";
 import { apiService } from "../../utils/API/apiService";
 
 export class PaginationRow extends Component {
-  render() {
-    let url = window.location.href;
-    console.log("pagination", this);
-
-    let pageNumber = [];
-    apiService.lessons("22").then((x) => {
-      pageNumber = x;
-      console.log("this is all lessons", pageNumber);
+  constructor(props) {
+    super(props);
+    this.state = {
+      modulId: "",
+      lessonId: "",
+      lessons: [],
+      pageCount: 0,
+      pageNumber: 1,
+      currentLesson: {},
+    };
+  }
+  componentDidMount() {
+    this.setState({
+      modulId: this.props.data.moduleID,
+      lessonId: this.props.data.lessonID,
     });
-    //const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    console.log("pagination modulid", this.props.data.moduleID);
+    apiService.lessons(this.props.data.moduleID).then((data) => {
+      console.log("all lessons", data);
+      this.setState({
+        lessons: data,
+        currentLesson: data[0],
+        pageCount: data.length,
+      });
+    });
+  }
 
-    for (let i = 1; i <= pageNumber.length - 1; i++) {
-      pageNumber.push(i);
-      console.log("page number", i);
-    }
-
+  render() {
     return (
       <div className="pagination">
         <Pagination>
           <Pagination.First />
           <Pagination.Prev />
-          {pageNumber.map((i) => (
-            <Pagination.Item>
-              {" "}
-              {/*href={`${url}/QuizeLessonName`*/} }{i}
-            </Pagination.Item>
-          ))}
+          {this.state.lessons.map((index, v) => {
+            return <Pagination.Item>{index}</Pagination.Item>;
+          })}
 
           <Pagination.Next />
           <Pagination.Last />

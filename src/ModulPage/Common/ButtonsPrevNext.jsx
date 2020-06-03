@@ -26,6 +26,7 @@ export class ButtonsPrevNext extends Component {
     render () {
      return (
         <Container>
+            <br/>
             <Row>
                 <Col xs={6} md={6}>
                     <Button variant="primary" onClick={this.toThePreviousPage}>Previous</Button>

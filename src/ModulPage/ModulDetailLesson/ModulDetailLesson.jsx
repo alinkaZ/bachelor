@@ -27,12 +27,14 @@ function ChangeLesson({ status }) {
 function ModulLessonContent(param) {
   console.log("this.state.currentLesson", param.type);
   console.log("LessonID", param.lessonID);
-  switch (param.type) { //param.type.trim() does not works
-    case ("text" || "text           "):
+  switch (
+    param.type //param.type.trim() does not works
+  ) {
+    case "text" || "text           ":
       return <ModulDetailPageText info={param} />;
-    case ("video" ||  "video          "):
+    case "video" || "video          ":
       return <ModulDetailPageVideo info={param} />;
-    case ("quiz" ||  "quiz           "):
+    case "quiz" || "quiz           ":
       return <ModulDetailPageQuiz info={param} />;
     default:
       return <Finish />;
@@ -55,8 +57,8 @@ export class ModulDetailLesson extends Component {
     if (this.state.pageIndex > 0) {
       this.setState({
         pageIndex: this.state.pageIndex - 1,
-        currentLesson: this.state.lessons[this.state.pageIndex - 1]
-      })
+        currentLesson: this.state.lessons[this.state.pageIndex - 1],
+      });
     }
   };
 
@@ -64,26 +66,26 @@ export class ModulDetailLesson extends Component {
     if (this.state.pageIndex < this.state.lessons.length - 1) {
       this.setState({
         pageIndex: this.state.pageIndex + 1,
-        currentLesson: this.state.lessons[this.state.pageIndex + 1]
-      })
+        currentLesson: this.state.lessons[this.state.pageIndex + 1],
+      });
     } else {
       this.setState({
         pageIndex: this.state.lessons.length,
-        currentLesson: {}
-      })
+        currentLesson: {},
+      });
     }
   };
 
   componentDidMount() {
     this.setState({
       modulId: this.props.match.params.modulId,
-      lessonId: this.props.match.params.lessonId
-    })
+      lessonId: this.props.match.params.lessonId,
+    });
     apiService.lessons(this.props.match.params.modulId).then((data) => {
       this.setState({
         lessons: data,
-        currentLesson: data[0]
-      })
+        currentLesson: data[0],
+      });
     });
   }
 
@@ -105,17 +107,17 @@ export class ModulDetailLesson extends Component {
           <Row>
             <Breadcrumbs />
           </Row>
-          <Row>
-            <Col></Col>
-            <Col xs={4} md={1}></Col>
-            <PaginationRow />
-            <Col></Col>
+          <Row className="justify-content-md-center">
+            <PaginationRow data={this.state} />
           </Row>
-          <Row>
+          <Row className="justify-content-md-center">
             <Header title={this.state.currentLesson.name} />
           </Row>
-          <Row>{ModulLessonContent(this.state.currentLesson)}</Row>
-          <Row>
+          <Row className="justify-content-md-center">
+            {ModulLessonContent(this.state.currentLesson)}
+            <br/>
+          </Row>
+          <Row className="justify-content-md-center">
             <ButtonsPrevNext
               info={this.state.currentLesson}
               toPreviousPage={this.toPrevious}
@@ -123,7 +125,7 @@ export class ModulDetailLesson extends Component {
             />
           </Row>
           <Row>
-            <Col xs={12} md={12}>
+            <Col xs={12} md={12} className="justify-content-md-center">
               <CommentBox />
             </Col>
           </Row>
