@@ -4,6 +4,7 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import './InstructorBox.css';
 
+
 export class InsructorBox extends Component{
 render (){
     return (

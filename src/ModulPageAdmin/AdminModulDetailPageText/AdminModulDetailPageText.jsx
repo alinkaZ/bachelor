@@ -6,8 +6,8 @@ import { Breadcrumbs } from "../../ModulPage/Common/Breadcrumbs";
 import { ButtonGroupAdmin } from "../CommonAdmin/ButtonGroupAdmin";
 import { WordInput } from "../CommonAdmin/WordInput";
 import { PaginationRow } from "../../ModulPage/Common/Pagination";
-import { SaveDelete } from "../CommonAdmin/SaveDelete";
-import { apiService } from "../../utils/API/apiService";
+
+
 import FormControl from "react-bootstrap/FormControl";
 import InputGroup from "react-bootstrap/InputGroup";
 import {Editor, EditorState} from 'draft-js';
@@ -25,23 +25,15 @@ export class AdminModulDetailPageText extends Component {
       lessonId: lessonId,
     };
   }
-  save = () => {
-    console.log("Save lesson", this.state);
-    apiService.createLesson(this.state.modulId, {
-      type: this.state.type,
-      name: this.state.name,
-      details: this.state.details,
-    });
-  };
-  delete = () => {
-    console.log("Delete lesson");
-    apiService.deleteLesson(this.state);
-  };
+  
   changeState = (event) => {
     let s = this.state;
     let field = event.target.id;
     s[field] = event.target.value;
     this.setState(s);
+    if (this.props.onLessonChange){
+      this.props.onLessonChange(this.state);
+    }
   };
   render() {
     return (
@@ -71,11 +63,7 @@ export class AdminModulDetailPageText extends Component {
             />
           </InputGroup>
         </Row>
-        <Row>
-          <Col xs={12} md={11}>
-            <SaveDelete onSave={this.save} onDelete={this.delete} />
-          </Col>
-        </Row>
+        
       </>
     );
   }

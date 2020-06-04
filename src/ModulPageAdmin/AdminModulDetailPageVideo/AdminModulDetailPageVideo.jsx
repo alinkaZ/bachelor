@@ -25,18 +25,7 @@ export class AdminModulDetailPageVideo extends Component {
       lessonId: lessonId,
     };
   }
-  save = () => {
-    console.log("Save lesson", this.state);
-    apiService.createLesson(this.state.modulId, {
-      type: this.state.type,
-      name: this.state.name,
-      details: this.state.details,
-    });
-  };
-  delete = () => {
-    console.log("Delete lesson");
-    apiService.deleteLesson(this.state);
-  };
+  
   changeState = (event) => {
     let s = this.state;
     let field = event.target.id;
@@ -86,12 +75,8 @@ export class AdminModulDetailPageVideo extends Component {
           </Col>
           <Col></Col>
         </Row>
-        <Row></Row>
-        <Row>
-          <Col xs={12} md={12}>
-            <SaveDelete onSave={this.save} onDelete={this.delete} />
-          </Col>
-        </Row>
+        
+        
       </>
     );
   }

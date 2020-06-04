@@ -12,6 +12,8 @@ import { Breadcrumbs } from "../../ModulPage/Common/Breadcrumbs";
 import { Header } from "../../ModulPage/Common/Header";
 import Col from "react-bootstrap/Col";
 import { ButtonGroupAdmin } from "../CommonAdmin/ButtonGroupAdmin";
+import { SaveDelete } from "../CommonAdmin/SaveDelete";
+import { apiService } from "../../utils/API/apiService";
 
 const ChangeLesson_STATES = {
   text: <AdminModulDetailPageText />,
@@ -56,11 +58,61 @@ export class AdminModulDetailLesson extends Component {
     };
   }
   onLessonTypeChange = (value) => {
-    console.log(value)
+    console.log(value);
     let lessonTmp = this.state;
     lessonTmp.type = value;
     this.setState(lessonTmp);
   };
+  toPrevious = () => {
+    if (this.state.pageIndex > 0) {
+      this.setState({
+        pageIndex: this.state.pageIndex - 1,
+        currentLesson: this.state.lessons[this.state.pageIndex - 1],
+      });
+    }
+  };
+
+  toNext = () => {
+    if (this.state.pageIndex < this.state.lessons.length - 1) {
+      this.setState({
+        pageIndex: this.state.pageIndex + 1,
+        currentLesson: this.state.lessons[this.state.pageIndex + 1],
+      });
+    } else {
+      this.setState({
+        pageIndex: this.state.lessons.length,
+        currentLesson: {},
+      });
+    }
+  };
+  save = () => {
+    console.log("Save lesson", this.state);
+    apiService.createLesson(this.state.modulId, {
+      type: this.state.type,
+      name: this.state.name,
+      details: this.state.details,
+    });
+  };
+  delete = () => {
+    console.log("Delete lesson");
+    apiService.deleteLesson(this.state);
+  };
+  onLessonChange
+
+  componentDidMount() {
+    this.setState({
+      modulId: this.props.match.params.modulId,
+      lessonId: this.props.match.params.lessonId,
+    });
+    apiService.lessons(this.props.match.params.modulId).then((data) => {
+      this.setState({
+        pageCount:data.length,
+        lessons: data,
+        currentLesson: data[0],
+      });
+      console.log("component", this.state)
+    });
+  }
 
   render() {
     let { modulId, lessonId } = this.props.match.params;
@@ -94,13 +146,18 @@ export class AdminModulDetailLesson extends Component {
           }[this.state.type]
         }
         <Row>
-          <ButtonsPrevNext />
+          <ButtonsPrevNext
+            info={this.state.currentLesson}
+            toPreviousPage={this.toPrevious}
+            toNextPage={this.toNext}
+          />
         </Row>
         <Row>
-          <Col xs={12} md={12}>
-            <CommentBox />
+          <Col xs={12} md={11}>
+            <SaveDelete onSave={this.save} onDelete={this.delete} />
           </Col>
         </Row>
+        
       </Container>
     );
   }

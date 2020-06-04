@@ -29,19 +29,25 @@ export class AdminModulMainPage extends Component {
         title: "",
         picture: "",
         price: 0,
-        duration: 0,
+        duration: "0",
       },
+      lessons: [],
+      currentLesson: {},
     };
   }
   componentDidMount() {
     //debugger;
-    console.log(this.props.match);
+    console.log("alle props", this.props.match.params.modulId);
     let { modulId } = this.props.match.params;
     if (modulId != null) {
       apiService
         .getModuleByID(modulId)
         .then((data) => this.setState({ data: data }));
-      console.log(this.props);
+      console.log("modul edit", this.props);
+      apiService.lessons(this.props.match.params.modulId).then((lessons) => {
+        this.setState({ lessons: lessons });
+        console.log("lessons edit", this.state.lessons);
+      });
     }
   }
 
@@ -103,7 +109,7 @@ export class AdminModulMainPage extends Component {
           <Col xs={12} md={8}>
             <br />
             <label htmlFor="basic-url">Describe briefly your course </label>
-            {/*<WordInput rows="14" />*/}
+
             <InputGroup>
               <FormControl
                 as="textarea"
@@ -121,13 +127,28 @@ export class AdminModulMainPage extends Component {
                 <Button type="button" onClick={this.saveModul}>
                   Save
                 </Button>
-                
+                <br />
+              </Row>
+              <Row>
                 <Button
                   type="button"
                   href={`/modules/${this.state.data.moduleID}/edit/lessons/create`}
                 >
                   Add a content
                 </Button>
+                <br />
+              </Row>
+              <Row>
+                {this.state.lessons.length > 0 ? (
+                  <Button
+                    type="button"
+                    href={`/modules/${this.state.data.moduleID}/edit/lessons/${this.state.lessons[0].lessonID}/edit`}
+                  >
+                    Edit a content
+                  </Button>
+                ) : (
+                  ""
+                )}
               </Row>
               <Row>
                 <br />

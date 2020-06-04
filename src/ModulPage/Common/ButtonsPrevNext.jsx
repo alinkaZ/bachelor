@@ -19,9 +19,9 @@ export class ButtonsPrevNext extends Component {
           }
     }
     toThePreviousPage=()=>{
-      
+        if (this.props.toPreviousPage) {
             this.props.toPreviousPage();
-      
+        }
     }
     render () {
      return (

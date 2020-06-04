@@ -8,13 +8,13 @@ import { apiService } from "../../utils/API/apiService";
 
 function newUser (data){
   apiService.createUser(data).then((x) => {
-    console.log("registration data", x);
+    console.log(x);
   });
 }
 
 
 const RegisterModalForm = (props) => {
-  //const [name, surName, email, username, password];
+  //const [name, surName, email, phone, password];
   return (
     <Modal
       {...props}

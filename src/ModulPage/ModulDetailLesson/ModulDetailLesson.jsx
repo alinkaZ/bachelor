@@ -76,6 +76,7 @@ export class ModulDetailLesson extends Component {
     }
   };
 
+
   componentDidMount() {
     this.setState({
       modulId: this.props.match.params.modulId,
@@ -83,10 +84,20 @@ export class ModulDetailLesson extends Component {
     });
     apiService.lessons(this.props.match.params.modulId).then((data) => {
       this.setState({
+        pageCount:data.length,
         lessons: data,
         currentLesson: data[0],
       });
+      console.log("component", this.state)
     });
+  }
+  changePage = (index) =>{
+    if (index > 0 && index<=this.state.pageCount) {
+      this.setState({
+        pageIndex: index - 1,
+        currentLesson: this.state.lessons[index - 1],
+      });
+    }
   }
 
   /*fetch(`https://api.twitter.com/user/${handle}`)
@@ -108,7 +119,8 @@ export class ModulDetailLesson extends Component {
             <Breadcrumbs />
           </Row>
           <Row className="justify-content-md-center">
-            <PaginationRow data={this.state} />
+            <PaginationRow pageIndex={this.state.pageIndex} pageCount={this.state.pageCount} toPage={this.changePage} toPreviousPage={this.toPrevious}
+              toNextPage={this.toNext}/>
           </Row>
           <Row className="justify-content-md-center">
             <Header title={this.state.currentLesson.name} />
@@ -125,7 +137,7 @@ export class ModulDetailLesson extends Component {
             />
           </Row>
           <Row>
-            <Col xs={12} md={12} className="justify-content-md-center">
+            <Col xs={12} md={12}>
               <CommentBox />
             </Col>
           </Row>

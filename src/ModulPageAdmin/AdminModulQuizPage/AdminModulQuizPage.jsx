@@ -25,18 +25,7 @@ export class AdminModulDetailPageQuiz extends Component {
       },
     };
   }
-  save = () => {
-    console.log("Save lesson", this.state);
-    apiService.createLesson(this.state.modulId, {
-      type: this.state.type,
-      name: this.state.name,
-      details: this.state.details,
-    });
-  };
-  delete = () => {
-    console.log("Delete lesson");
-    apiService.deleteLesson(this.state);
-  };
+ 
 
   addNewQuestion = (item) => {
     console.log(this.state);
@@ -83,11 +72,7 @@ export class AdminModulDetailPageQuiz extends Component {
           <Question data={this.state.newQuestion} onAdd={this.addNewQuestion} />
         </Row>
 
-        <Row>
-          <Col xs={12} md={11}>
-            <SaveDelete onSave={this.save} onDelete={this.delete} />
-          </Col>
-        </Row>
+       
       </>
     );
   }

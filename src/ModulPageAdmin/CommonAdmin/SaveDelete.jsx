@@ -28,7 +28,7 @@ export class SaveDelete extends Component {
       <>
         <Container>
           <Row>
-            <Col xs={12} md={11}>
+            <Col xs={12} md={1}>
               <OverlayTrigger
                 overlay={
                   <Tooltip id="tooltip-disabled">
@@ -37,11 +37,10 @@ export class SaveDelete extends Component {
                   </Tooltip>
                 }
               >
-                <span className="d-inline-block">
-                  <Button onClick={this.delete}>Delete</Button>
-                </span>
+                <Button onClick={this.delete}>Delete</Button>
               </OverlayTrigger>
             </Col>
+            <Col></Col>
             <Col xs={12} md={1}>
               <OverlayTrigger
                 overlay={
@@ -50,9 +49,7 @@ export class SaveDelete extends Component {
                   </Tooltip>
                 }
               >
-                <span className="d-inline-block">
-                  <Button onClick={this.save}>Save</Button>
-                </span>
+                <Button onClick={this.save}>Save</Button>
               </OverlayTrigger>
             </Col>
           </Row>

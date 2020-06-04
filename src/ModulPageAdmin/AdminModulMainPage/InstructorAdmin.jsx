@@ -7,6 +7,8 @@ import Tooltip from "react-bootstrap/Tooltip";
 import Row from "react-bootstrap/Row";
 import Form from 'react-bootstrap/Form';
 
+
+
 export class InstructorAdmin extends Component {
   changeSelected=(event)=>{
     console.log(event);
@@ -36,12 +38,14 @@ export class InstructorAdmin extends Component {
               src={AddPictureIcon}
             />
           </OverlayTrigger>*/}
+
+
           <Form.Group controlId="exampleForm.ControlSelect1" onChange={this.changeSelected}>
             <Form.Label>Select lecturer of the course</Form.Label>
             <Form.Control as="select">
-              <option value="erika">Erika Gubrium</option>
-              <option value="aadne">Aadne Aasland</option>
-              <option value="linda"> Linda Cook</option>
+              <option teacherID="5">Erika Gubrium</option>
+              <option teacherID="6">Aadne Aasland</option>
+              <option teacherID="7"> Linda Cook</option>
               
             </Form.Control>
           </Form.Group>
