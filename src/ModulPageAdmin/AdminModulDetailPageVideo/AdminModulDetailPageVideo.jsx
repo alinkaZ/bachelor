@@ -31,9 +31,23 @@ export class AdminModulDetailPageVideo extends Component {
     let field = event.target.id;
     s[field] = event.target.value;
     this.setState(s);
+    if (this.props.onLessonChange){
+      this.props.onLessonChange(this.state);
+    }
   };
+
   componentDidMount() {
     bsCustomFileInput.init();
+  }
+  componentWillReceiveProps(value) {
+    //debugger;
+    console.log("Value", value);
+    if (value.info) {
+      this.setState({
+        name: value.info.name,
+        details: value.info.details,
+      });
+    }
   }
 
   render() {

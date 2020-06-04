@@ -11,13 +11,13 @@ export class SaveDelete extends Component {
     super(props);
   }
   save = (event) => {
-    console.log(this.props);
+    console.log("OnSave", this.props);
     if (this.props.onSave) {
       this.props.onSave();
     }
   };
   delete = (event) => {
-    console.log(this.props);
+    console.log("OnDelete", this.props);
     if (this.props.onDelete) {
       this.props.onDelete();
     }
@@ -29,28 +29,28 @@ export class SaveDelete extends Component {
         <Container>
           <Row>
             <Col xs={12} md={1}>
-              <OverlayTrigger
-                overlay={
-                  <Tooltip id="tooltip-disabled">
+             {/* <OverlayTrigger
+               overlay={
+                  <Tooltip >
                     You will delete this Page with all information. Page will be
                     stored in a bin and will be deleted forever after 6 month
                   </Tooltip>
                 }
-              >
+              ></OverlayTrigger>*/}
                 <Button onClick={this.delete}>Delete</Button>
-              </OverlayTrigger>
+              
             </Col>
             <Col></Col>
             <Col xs={12} md={1}>
-              <OverlayTrigger
+              {/*<OverlayTrigger
                 overlay={
-                  <Tooltip id="tooltip-disabled">
+                  <Tooltip >
                     You need to Save this Page. You can edit it anytime
                   </Tooltip>
                 }
-              >
+              ></OverlayTrigger>*/}
                 <Button onClick={this.save}>Save</Button>
-              </OverlayTrigger>
+              
             </Col>
           </Row>
         </Container>

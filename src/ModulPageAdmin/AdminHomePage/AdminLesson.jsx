@@ -47,20 +47,25 @@ export class AdminModulDetailLesson extends Component {
     super(props);
     let { modulId, lessonId } = this.props.match.params;
     this.state = {
-      id: 0,
-      type: "text",
+      pageIndex:0,
+      lessons:[],
       modulId: modulId,
-      lessonId: lessonId,
-      title: "",
-      details: {
-        text: "",
+      currentLesson: {
+        id: 0,
+        type: "text",
+        modulId: modulId,
+        lessonID: 0,
+        title: "",
+        details: {
+          text: "",
+        },
       },
     };
   }
   onLessonTypeChange = (value) => {
     console.log(value);
     let lessonTmp = this.state;
-    lessonTmp.type = value;
+    lessonTmp.currentLesson.type = value;
     this.setState(lessonTmp);
   };
   toPrevious = () => {
@@ -87,17 +92,35 @@ export class AdminModulDetailLesson extends Component {
   };
   save = () => {
     console.log("Save lesson", this.state);
+    if(this.state.currentLesson.lessonID==0){
     apiService.createLesson(this.state.modulId, {
-      type: this.state.type,
-      name: this.state.name,
-      details: this.state.details,
-    });
+      type: this.state.currentLesson.type,
+      name: this.state.currentLesson.name,
+      details: this.state.currentLesson.details,
+    });}
+    else{
+      apiService.updateLessonByID(this.state.modulId, this.state.currentLesson.lessonID,{
+        type: this.state.currentLesson.type,
+      name: this.state.currentLesson.name,
+      details: this.state.currentLesson.details,
+      lessonID:this.state.currentLesson.lessonID,
+      moduleID:this.state.modulId * 1,
+      })
+    }
   };
   delete = () => {
     console.log("Delete lesson");
-    apiService.deleteLesson(this.state);
+    apiService.deleteLesson(this.state.currentLesson);
   };
-  onLessonChange
+  onLessonChange = (lessonData) => {
+    let data=this.state;
+    data.currentLesson.name=lessonData.name;
+    data.currentLesson.details=lessonData.details;
+    
+
+    this.setState(data);
+    console.log("lessonsData", data);
+  };
 
   componentDidMount() {
     this.setState({
@@ -105,12 +128,13 @@ export class AdminModulDetailLesson extends Component {
       lessonId: this.props.match.params.lessonId,
     });
     apiService.lessons(this.props.match.params.modulId).then((data) => {
+      if (data.length>0)
       this.setState({
-        pageCount:data.length,
+        pageCount: data.length,
         lessons: data,
         currentLesson: data[0],
       });
-      console.log("component", this.state)
+      console.log("component", this.state);
     });
   }
 
@@ -119,9 +143,9 @@ export class AdminModulDetailLesson extends Component {
     lessonId = lessonId * 1;
     console.log(modulId, lessonId);
 
-    if (lessonsData.length < lessonId) {
+    /*if (lessonsData.length < lessonId) {
       this.setState(lessonsData[lessonId - 1]);
-    }
+    }*/
 
     return (
       <Container fluid>
@@ -140,10 +164,25 @@ export class AdminModulDetailLesson extends Component {
         </Row>
         {
           {
-            text: <AdminModulDetailPageText info={this.state} />,
-            video: <AdminModulDetailPageVideo info={this.state} />,
-            quiz: <AdminModulDetailPageQuiz info={this.state} />,
-          }[this.state.type]
+            text: (
+              <AdminModulDetailPageText
+                info={this.state.currentLesson}
+                onLessonChange={this.onLessonChange}
+              />
+            ),
+            video: (
+              <AdminModulDetailPageVideo
+                info={this.state.currentLesson}
+                onLessonChange={this.onLessonChange}
+              />
+            ),
+            quiz: (
+              <AdminModulDetailPageQuiz
+                info={this.state.currentLesson}
+                onLessonChange={this.onLessonChange}
+              />
+            ),
+          }[this.state.currentLesson.type]
         }
         <Row>
           <ButtonsPrevNext
@@ -157,7 +196,6 @@ export class AdminModulDetailLesson extends Component {
             <SaveDelete onSave={this.save} onDelete={this.delete} />
           </Col>
         </Row>
-        
       </Container>
     );
   }

@@ -3,7 +3,7 @@ import { BehaviorSubject } from "rxjs";
 //import config from 'config';
 import { handleResponse } from "../handle-response.js";
 import { authenticationService } from "../auth/authentication.service.js";
-
+export const APIurl = "https://wixapi.azurewebsites.net/api/";
 export const apiService = {
   modules,
   getModuleByID,
@@ -29,7 +29,7 @@ function modules() {
     },
   };
 
-  return fetch(`https://wixapi.azurewebsites.net/api/Modules`, requestOptions)
+  return fetch(`${APIurl}Modules`, requestOptions)
     .then(handleResponse)
     .then((data) => {
       // store user details and jwt token in local storage to keep user
@@ -49,7 +49,7 @@ function getModuleByID(modulId) {
   };
 
   return fetch(
-    `https://wixapi.azurewebsites.net/api/Modules/${modulId}`,
+    `${APIurl}Modules/${modulId}`,
     requestOptions
   )
     .then(handleResponse)
@@ -72,7 +72,7 @@ function createModule(modulData) {
     body: JSON.stringify(modulData),
   };
 
-  return fetch(`https://wixapi.azurewebsites.net/api/Modules`, requestOptions)
+  return fetch(`${APIurl}Modules`, requestOptions)
     .then(handleResponse)
     .then((data) => {
       // store user details and jwt token in local storage to keep user
@@ -92,7 +92,7 @@ function deleteModuleByID(modulId) {
   };
 
   return fetch(
-    `https://wixapi.azurewebsites.net/api/Modules/${modulId}`,
+    `${APIurl}Modules/${modulId}`,
     requestOptions
   )
     .then(handleResponse)
@@ -115,7 +115,7 @@ function updateModuleByID(modulId, data) {
   };
 
   return fetch(
-    `https://wixapi.azurewebsites.net/api/Modules/${modulId}`,
+    `${APIurl}Modules/${modulId}`,
     requestOptions
   )
     .then(handleResponse)
@@ -138,7 +138,7 @@ function lessons(ModuleId) {
     },
   };
 
-  return fetch(`https://wixapi.azurewebsites.net/api/module/${ModuleId}/Lessons`, requestOptions)
+  return fetch(`${APIurl}module/${ModuleId}/Lessons`, requestOptions)
     .then(handleResponse)
     .then((data) => {
       // store user details and jwt token in local storage to keep user
@@ -158,7 +158,7 @@ function getLessonByID(ModuleId, LessonId) {
   };
 
   return fetch(
-    `https://wixapi.azurewebsites.net/api/module/${ModuleId}/Lessons/${LessonId}`,
+    `${APIurl}module/${ModuleId}/Lessons/${LessonId}`,
     requestOptions
   )
     .then(handleResponse)
@@ -181,7 +181,7 @@ function createLesson(ModuleID, lessonData) {
     body: JSON.stringify(lessonData),
   };
 
-  return fetch(`https://wixapi.azurewebsites.net/api/module/${ModuleID}/Lessons`, requestOptions)
+  return fetch(`${APIurl}module/${ModuleID}/Lessons`, requestOptions)
     .then(handleResponse)
     .then((data) => {
       console.log(data);
@@ -198,7 +198,7 @@ function deleteLessonByID(ModuleId, LessonId) {
   };
 
   return fetch(
-    `https://wixapi.azurewebsites.net/api/module/${ModuleId}/Lessons/${LessonId}`,
+    `${APIurl}module/${ModuleId}/Lessons/${LessonId}`,
     requestOptions
   )
     .then(handleResponse)
@@ -210,7 +210,7 @@ function deleteLessonByID(ModuleId, LessonId) {
     });
 }
 
-function updateLessonByID(lessonId, data) {
+function updateLessonByID(moduleId, lessonId, data) {
   const requestOptions = {
     method: "PUT",
     headers: {
@@ -221,7 +221,7 @@ function updateLessonByID(lessonId, data) {
   };
 
   return fetch(
-    `https://wixapi.azurewebsites.net/api/Lessons/${lessonId}`,
+    `${APIurl}module/${moduleId}/Lessons/${lessonId}`,
     requestOptions
   )
     .then(handleResponse)
@@ -247,7 +247,7 @@ function createUser(userData) {
     body: JSON.stringify(userData),
   };
 
-  return fetch(`https://wixapi.azurewebsites.net/api/Persons`, requestOptions)
+  return fetch(`${APIurl}Persons`, requestOptions)
     .then(handleResponse)
     .then((data) => {
       // store user details and jwt token in local storage to keep user

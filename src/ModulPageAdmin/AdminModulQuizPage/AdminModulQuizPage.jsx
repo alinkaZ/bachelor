@@ -25,12 +25,23 @@ export class AdminModulDetailPageQuiz extends Component {
       },
     };
   }
- 
 
   addNewQuestion = (item) => {
     console.log(this.state);
-    this.setState({
+    let details = JSON.stringify({
       questions: [...this.state.questions, item],
+
+      newQuestion: {
+        name: "",
+        explanation: "",
+        answers: [],
+        newAnswer: { name: "", isRight: false },
+      },
+    });
+    this.setState({
+      details:details,
+      questions: [...this.state.questions, item],
+
       newQuestion: {
         name: "",
         explanation: "",
@@ -39,13 +50,30 @@ export class AdminModulDetailPageQuiz extends Component {
       },
     });
     console.log(this.state);
+    if (this.props.onLessonChange) {
+      this.props.onLessonChange(this.state);
+    }
   };
+
   changeState = (event) => {
     let s = this.state;
     let field = event.target.id;
     s[field] = event.target.value;
     this.setState(s);
+    if (this.props.onLessonChange) {
+      this.props.onLessonChange(this.state);
+    }
   };
+  componentWillReceiveProps(value) {
+    //debugger;
+    console.log("Value", value);
+    if (value.info) {
+      this.setState({
+        name: value.info.name,
+        //details: value.info.details,
+      });
+    }
+  }
 
   render() {
     return (
@@ -71,8 +99,6 @@ export class AdminModulDetailPageQuiz extends Component {
         <Row>
           <Question data={this.state.newQuestion} onAdd={this.addNewQuestion} />
         </Row>
-
-       
       </>
     );
   }
