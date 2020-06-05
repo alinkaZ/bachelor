@@ -58,6 +58,7 @@ export class ModulDetailLesson extends Component {
       this.setState({
         pageIndex: this.state.pageIndex - 1,
         currentLesson: this.state.lessons[this.state.pageIndex - 1],
+        //lessonId: this.state.lessons[this.state.pageIndex - 1].lessonID
       });
     }
   };
@@ -67,6 +68,7 @@ export class ModulDetailLesson extends Component {
       this.setState({
         pageIndex: this.state.pageIndex + 1,
         currentLesson: this.state.lessons[this.state.pageIndex + 1],
+        //lessonId: this.state.lessons[this.state.pageIndex + 1].lessonID,
       });
     } else {
       this.setState({
@@ -96,6 +98,7 @@ export class ModulDetailLesson extends Component {
       this.setState({
         pageIndex: index - 1,
         currentLesson: this.state.lessons[index - 1],
+        //lessonId: this.state.lessons[this.state.pageIndex - 1].lessonID
       });
     }
   }
@@ -116,7 +119,7 @@ export class ModulDetailLesson extends Component {
       return (
         <Container>
           <Row>
-            <Breadcrumbs />
+            <Breadcrumbs info={this.state.modulID} />
           </Row>
           <Row className="justify-content-md-center">
             <PaginationRow pageIndex={this.state.pageIndex} pageCount={this.state.pageCount} toPage={this.changePage} toPreviousPage={this.toPrevious}

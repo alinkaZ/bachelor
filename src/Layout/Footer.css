@@ -4,13 +4,12 @@
     position: flex;
     font-size: 12px!important;
 }
-#footer{
-}
+
 
 #footer a{
     color: black!important;
 }
 
 .footer {
-  margin-top: 50px;
+  margin-top: 80px!important;
 }

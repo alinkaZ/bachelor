@@ -47,7 +47,7 @@ export class CardAdmin extends Component {
             <div class="container">
               <div class="row">
                 <div class="col">
-          <p id="lector">{item.teacherId} </p>
+                  <p id="lector">{item.teacherId} Erika Gubrium </p>
                 </div>
                 <div class="col">
                   <p id="time"> {item.duration} </p>

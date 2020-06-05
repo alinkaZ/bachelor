@@ -47,9 +47,10 @@ export class AdminModulDetailLesson extends Component {
     super(props);
     let { modulId, lessonId } = this.props.match.params;
     this.state = {
-      pageIndex:0,
-      lessons:[],
+      pageIndex: 0,
+      lessons: [],
       modulId: modulId,
+     
       currentLesson: {
         id: 0,
         type: "text",
@@ -62,6 +63,16 @@ export class AdminModulDetailLesson extends Component {
       },
     };
   }
+  changePage = (index) => {
+    if (index > 0 && index <= this.state.pageCount) {
+      this.setState({
+        pageIndex: index - 1,
+        currentLesson: this.state.lessons[index - 1],
+        //lessonId: this.state.lessons[this.state.pageIndex - 1].lessonID,
+      });
+    }
+  };
+
   onLessonTypeChange = (value) => {
     console.log(value);
     let lessonTmp = this.state;
@@ -92,31 +103,43 @@ export class AdminModulDetailLesson extends Component {
   };
   save = () => {
     console.log("Save lesson", this.state);
-    if(this.state.currentLesson.lessonID==0){
-    apiService.createLesson(this.state.modulId, {
-      type: this.state.currentLesson.type,
-      name: this.state.currentLesson.name,
-      details: this.state.currentLesson.details,
-    });}
-    else{
-      apiService.updateLessonByID(this.state.modulId, this.state.currentLesson.lessonID,{
+    if (this.state.currentLesson.lessonID == 0) {
+      apiService.createLesson(this.state.modulId, {
         type: this.state.currentLesson.type,
-      name: this.state.currentLesson.name,
-      details: this.state.currentLesson.details,
-      lessonID:this.state.currentLesson.lessonID,
-      moduleID:this.state.modulId * 1,
-      })
+        name: this.state.currentLesson.name,
+        details: this.state.currentLesson.details,
+      });
+    } else {
+      apiService.updateLessonByID(
+        this.state.modulId,
+        this.state.currentLesson.lessonID,
+        {
+          type: this.state.currentLesson.type,
+          name: this.state.currentLesson.name,
+          details: this.state.currentLesson.details,
+          lessonID: this.state.currentLesson.lessonID,
+          moduleID: this.state.modulId * 1,
+        }
+      );
     }
   };
   delete = () => {
-    console.log("Delete lesson");
-    apiService.deleteLesson(this.state.currentLesson);
+    console.log("Delete lesson", this.state);
+    if (this.state.currentLesson.lessonID != 0) {
+      apiService.deleteLessonByID(this.state.modulId, this.state.currentLesson.lessonID, {
+        type: this.state.currentLesson.type,
+        name: this.state.currentLesson.name,
+        details: this.state.currentLesson.details,
+      });
+    } 
   };
+
+ 
   onLessonChange = (lessonData) => {
-    let data=this.state;
-    data.currentLesson.name=lessonData.name;
-    data.currentLesson.details=lessonData.details;
-    
+    let data = this.state;
+    data.currentLesson.name = lessonData.name;
+    data.currentLesson.details = lessonData.details;
+    data.currentLesson.lessonID = lessonData.lessonID;
 
     this.setState(data);
     console.log("lessonsData", data);
@@ -128,12 +151,12 @@ export class AdminModulDetailLesson extends Component {
       lessonId: this.props.match.params.lessonId,
     });
     apiService.lessons(this.props.match.params.modulId).then((data) => {
-      if (data.length>0)
-      this.setState({
-        pageCount: data.length,
-        lessons: data,
-        currentLesson: data[0],
-      });
+      if (data.length > 0)
+        this.setState({
+          pageCount: data.length,
+          lessons: data,
+          currentLesson: data[0],
+        });
       console.log("component", this.state);
     });
   }
@@ -158,7 +181,13 @@ export class AdminModulDetailLesson extends Component {
         <Row>
           <Col></Col>
           <Col xs={12} md={2}>
-            <PaginationRow />
+            <PaginationRow
+              pageIndex={this.state.pageIndex}
+              pageCount={this.state.pageCount}
+              toPage={this.changePage}
+              toPreviousPage={this.toPrevious}
+              toNextPage={this.toNext}
+            />
           </Col>
           <Col></Col>
         </Row>
@@ -193,6 +222,7 @@ export class AdminModulDetailLesson extends Component {
         </Row>
         <Row>
           <Col xs={12} md={11}>
+          
             <SaveDelete onSave={this.save} onDelete={this.delete} />
           </Col>
         </Row>

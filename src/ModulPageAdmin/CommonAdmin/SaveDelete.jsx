@@ -26,8 +26,9 @@ export class SaveDelete extends Component {
   render() {
     return (
       <>
-        <Container>
+        <Container className="SaveDelete"> 
           <Row>
+            
             <Col xs={12} md={1}>
              {/* <OverlayTrigger
                overlay={
@@ -37,6 +38,7 @@ export class SaveDelete extends Component {
                   </Tooltip>
                 }
               ></OverlayTrigger>*/}
+             
                 <Button onClick={this.delete}>Delete</Button>
               
             </Col>

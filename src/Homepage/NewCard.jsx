@@ -38,7 +38,7 @@ export class NewCard extends Component {
                 <div class="container">
                   <div class="row">
                     <div class="col">
-                      <p id="lector"> {/*{cardData.lecturer}*/} Erika Gubrium</p>
+                      <p id="lector"> {/*{cardData.lecturer}*/}Erika Gubrium</p>
                     </div>
                     <div class="col">
                       <p id="time"> {cardData.duration} </p>
