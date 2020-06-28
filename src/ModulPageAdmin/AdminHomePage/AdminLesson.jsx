@@ -45,14 +45,14 @@ export class AdminModulDetailLesson extends Component {
         })*/
   constructor(props) {
     super(props);
-    let { modulId, lessonId } = this.props.match.params;
+    let { modulId} = this.props.match.params;
     this.state = {
       pageIndex: 0,
       lessons: [],
       modulId: modulId,
      
       currentLesson: {
-        id: 0,
+       
         type: "text",
         modulId: modulId,
         lessonID: 0,
@@ -67,7 +67,7 @@ export class AdminModulDetailLesson extends Component {
     if (index > 0 && index <= this.state.pageCount) {
       this.setState({
         pageIndex: index - 1,
-        currentLesson: this.state.lessons[index - 1],
+        currentLesson: {...this.state.lessons[index - 1]},
         //lessonId: this.state.lessons[this.state.pageIndex - 1].lessonID,
       });
     }
@@ -83,7 +83,7 @@ export class AdminModulDetailLesson extends Component {
     if (this.state.pageIndex > 0) {
       this.setState({
         pageIndex: this.state.pageIndex - 1,
-        currentLesson: this.state.lessons[this.state.pageIndex - 1],
+        currentLesson: {...this.state.lessons[this.state.pageIndex - 1]},
       });
     }
   };
@@ -92,7 +92,7 @@ export class AdminModulDetailLesson extends Component {
     if (this.state.pageIndex < this.state.lessons.length - 1) {
       this.setState({
         pageIndex: this.state.pageIndex + 1,
-        currentLesson: this.state.lessons[this.state.pageIndex + 1],
+        currentLesson: {...this.state.lessons[this.state.pageIndex + 1]},
       });
     } else {
       this.setState({
@@ -103,13 +103,24 @@ export class AdminModulDetailLesson extends Component {
   };
   save = () => {
     console.log("Save lesson", this.state);
-    if (this.state.currentLesson.lessonID == 0) {
+    //debugger
+    if (  this.state.currentLesson.lessonID==0) {
       apiService.createLesson(this.state.modulId, {
         type: this.state.currentLesson.type,
         name: this.state.currentLesson.name,
         details: this.state.currentLesson.details,
       });
     } else {
+     // this.state.lessons.find(x=>x.lessonID==this.state.currentLesson.lessonID)
+
+      this.setState(prevState => ({
+        ...prevState,
+        lessons: prevState.lessons.map(lesson => ({
+          ...lesson,
+          name: lesson.lessonID==this.state.currentLesson.lessonID ? this.state.currentLesson.name  : lesson.name,
+          details: lesson.lessonID==this.state.currentLesson.lessonID ? this.state.currentLesson.details  : lesson.details
+        }))
+      }))
       apiService.updateLessonByID(
         this.state.modulId,
         this.state.currentLesson.lessonID,
@@ -139,7 +150,7 @@ export class AdminModulDetailLesson extends Component {
     let data = this.state;
     data.currentLesson.name = lessonData.name;
     data.currentLesson.details = lessonData.details;
-    data.currentLesson.lessonID = lessonData.lessonID;
+    //data.currentLesson.lessonID = lessonData.lessonID;
 
     this.setState(data);
     console.log("lessonsData", data);
@@ -155,7 +166,7 @@ export class AdminModulDetailLesson extends Component {
         this.setState({
           pageCount: data.length,
           lessons: data,
-          currentLesson: data[0],
+          currentLesson: {...data[0]},
         });
       console.log("component", this.state);
     });

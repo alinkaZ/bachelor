@@ -19,8 +19,10 @@ export class AdminModulDetailPageVideo extends Component {
     let { modulId, lessonId } = this.props.info;
     this.state = {
       type: this.props.info.type,
-      name: "",
-      details: "",
+      name: props.info.name,
+      details:  props.info.details,
+      //name: "",
+      //details: "",
       modulId: modulId,
       lessonId: lessonId,
     };
@@ -40,7 +42,7 @@ export class AdminModulDetailPageVideo extends Component {
     bsCustomFileInput.init();
   }
   componentWillReceiveProps(value) {
-    //debugger;
+   // debugger;
     console.log("Value", value);
     if (value.info) {
       this.setState({

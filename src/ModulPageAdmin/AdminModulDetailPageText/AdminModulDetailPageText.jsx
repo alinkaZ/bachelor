@@ -18,11 +18,14 @@ export class AdminModulDetailPageText extends Component {
     let { modulId, lessonId } = this.props.info;
     this.state = {
       type: this.props.info.type,
-      name: "",
-      details: EditorState.createEmpty(),
+      name: props.info.name,
+      details: props.info.details,
+     // name: "",
+      // details: EditorState.createEmpty(),
       modulId: modulId,
       lessonId: lessonId,
     };
+    //debugger;
   }
 
   changeState = (event) => {
@@ -35,7 +38,7 @@ export class AdminModulDetailPageText extends Component {
     }
   };
   componentWillReceiveProps(value) {
-    //debugger;
+   //debugger;
     console.log("Value", value);
     if (value.info) {
       this.setState({

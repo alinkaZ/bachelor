@@ -14,8 +14,10 @@ import { apiService } from "../../utils/API/apiService";
 export class AdminModulDetailPageQuiz extends Component {
   constructor(props) {
     super(props);
+  
 
     this.state = {
+      name: props.info.name,
       questions: [],
       newQuestion: {
         name: "",

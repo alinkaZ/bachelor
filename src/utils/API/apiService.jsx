@@ -211,6 +211,7 @@ function deleteLessonByID(ModuleId, LessonId) {
 }
 
 function updateLessonByID(moduleId, lessonId, data) {
+  debugger
   const requestOptions = {
     method: "PUT",
     headers: {
