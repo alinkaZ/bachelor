@@ -28,7 +28,7 @@ const controlPage = () => {
   } else {
     return (
       <>
-        <Nav.Link href="/login">Login</Nav.Link>
+        <Nav.Link href={process.env.PUBLIC_URL+"/login"}>Login</Nav.Link>
       </>
     );
   }

@@ -23,45 +23,47 @@ import {
 } from "react-router-dom";
 
 export default class App extends Component {
+  
   render() {
+    console.log("pros", process.env.PUBLIC_URL )
     const sessionToken = localStorage.getItem("sessionToken");
     return (
-      <Router>
+      <Router basename={'/bachelor'}>
         <Layout>
           <Switch>
             <Route exact path="/" component={CardModules} />
-            <Route path="/login" component={LoginPage} />
-            <Route path="/modules" exact component={CardModules} />
-            <Route path="/about" component={AboutPage} />
+            <Route path="${process.env.PUBLIC_URL}/login" component={LoginPage} />
+            <Route path="${process.env.PUBLIC_URL}/modules" exact component={CardModules} />
+            <Route path="${process.env.PUBLIC_URL}/about" component={AboutPage} />
             <Route
               exact
-              path={"/modules/:modulId"}
+              path={"${process.env.PUBLIC_URL}/modules/:modulId"}
               render={(props) => <ModulForm {...props} />}
             ></Route>
             <Route
               exact
-              path="/modules/:modulId/lessons/:lessonId"
+              path="${process.env.PUBLIC_URL}/modules/:modulId/lessons/:lessonId"
               component={ModulDetailLesson}
             ></Route>
-            <Route exact path={"/modules/:modulId/finish"}>
+            <Route exact path={"${process.env.PUBLIC_URL}/modules/:modulId/finish"}>
               <Finish />
             </Route>
-            <Route path="/admin" component={CardModulesAdmin} />
-            <Route path="/create" component={AdminModulMainPage} />
+            <Route path="${process.env.PUBLIC_URL}/admin" component={CardModulesAdmin} />
+            <Route path="${process.env.PUBLIC_URL}/create" component={AdminModulMainPage} />
             <Route
               exact
-              path="/modules/:modulId/edit"
+              path="${process.env.PUBLIC_URL}/modules/:modulId/edit"
               component={AdminModulMainPage}
             />
             <Route
               exact
-              path="/modules/:modulId/edit/lessons/create"
+              path="${process.env.PUBLIC_URL}/modules/:modulId/edit/lessons/create"
               component={AdminModulDetailLesson}
             />
 
             <Route
               exact
-              path="/modules/:modulId/edit/lessons/:lessonId/edit"
+              path="${process.env.PUBLIC_URL}/modules/:modulId/edit/lessons/:lessonId/edit"
               component={AdminModulDetailLesson}
             />
           </Switch>
