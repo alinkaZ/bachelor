@@ -6,4 +6,10 @@ import { BrowserRouter } from 'react-router-dom';
 //testing
 
 
-ReactDOM.render(<BrowserRouter basename="http://localhost:3000"><App /> </BrowserRouter>, document.getElementById('root'));
+ReactDOM.render(
+  <BrowserRouter>
+    <App />{' '}
+  </BrowserRouter>,
+  document.getElementById('root')
+);
+
